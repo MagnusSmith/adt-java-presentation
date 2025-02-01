@@ -21,6 +21,15 @@
         .fragment.blur.visible {
             filter: none;
         }
+
+        .reveal pre code {
+            display: block; /* Ensure block-level layout */
+            overflow-y: auto; /* Add vertical scrollbar when needed */
+            max-height: 400px; /* Set maximum height for the code block */
+            word-wrap: normal; /* Prevent text wrapping to keep lines intact */
+            white-space: pre; /* Preserve spaces and line breaks in code */
+        }
+
     </style>
 
 </head>
@@ -29,10 +38,8 @@
 <div class="reveal">
     <div class="slides">
         <section data-background-transition="slide" data-background="assets/adt_pattern_matching_java.webp"></section>
-        <section>
-            <div data-markdown>## Domain Modelling</div>
+        <section><h2>Domain Modelling</h2>
             <section>
-
                 <aside class="notes" data-markdown>
                     ### When we develop an application
                     ### We model some aspect of business to describe and solve a problem.
@@ -164,46 +171,44 @@
                 <p class="fragment custom blur highlight-current-green" data-fragment-index="4">Maintainability</p>
             </section>
         </section>
-        <section>Example
+        <section><h3>Banking Example</h3>
+            <section>
+                <div class="fragment custom blur " data-fragment-index="1">
+                    <h4>Domain Concepts</h4>
+                    <p class=" fragment custom blur highlight-green" data-fragment-index="2">Account, Transaction,
+                        Balance </p>
+                </div>
+                <div class="fragment custom blur " data-fragment-index="3">
+                    <h4>Operations</h4>
+                    <p class=" fragment custom blur highlight-green" data-fragment-index="4">deposit, withdraw, transfer</p>
+                </div>
+            </section>
+            <section>
+                <div class="fragment custom blur " data-fragment-index="1">
+                    Algebraic laws: Consistency<p class="fragment custom blur highlight-green" data-fragment-index="2">
+                    withdraw operation requires sufficient funds </p>
+                </div>
+            </section>
+            <section>
+                <div class="fragment custom blur " data-fragment-index="1">
+                    Algebraic laws: Associativity<p class="fragment custom blur highlight-green" data-fragment-index="2">
+                    Multiple deposits and withdrawals result in same final balance regardless of order</p>
+                </div>
+            </section>
         </section>
-        <section><h3>Banking System</h3>
-            <div class="fragment custom blur " data-fragment-index="1">
-                <h4>Domain Concepts</h4>
-                <p class=" fragment custom blur highlight-green" data-fragment-index="2">Account, Transaction,
-                    Balance </p>
-            </div>
-            <div class="fragment custom blur " data-fragment-index="3">
-                <h4>Operations</h4>
-                <p class=" fragment custom blur highlight-green" data-fragment-index="4">deposit, withdraw, transfer</p>
-            </div>
-
-        </section>
-        <section><h3>Banking System</h3>
-
-            <div class="fragment custom blur " data-fragment-index="1">
-                Algebraic laws: Consistency<p class="fragment custom blur highlight-green" data-fragment-index="2">
-                withdraw operation requires sufficient funds </p>
-            </div>
-
-        </section>
-        <section><h3>Banking System</h3>
-            <div class="fragment custom blur " data-fragment-index="1">
-                Algebraic laws: Associativity<p class="fragment custom blur highlight-green" data-fragment-index="2">
-                Multiple deposits and withdrawals result in same final balance regardless of order</p>
-            </div>
-
-        </section>
-        <section>Algebraic Data Types
-
+        <section>
+            <h4>Algebraic Data Types</h4>
+            <section>
             <p>ADT algebra consists of two primary operators</p>
             <ul>
                 <li>Product x</li>
                 <li>Sum +</li>
             </ul>
+            </section>
         </section>
-        <section>Algebraic Data Types
-            <h4>Product Type</h4>
             <section>
+                <h4>Product Type</h4>
+                <section>
                 <p class="fragment custom blur highlight-current-green" data-fragment-index="1"> Think of it as an “AND”
                     relationship.</p>
                 <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Point is a product
@@ -213,8 +218,8 @@
                     records</p>
 
                 <!--            <aside class="notes">Shh, these are my private speaker notes here</aside>-->
-            </section>
-            <section>
+                </section>
+                <section>
                  <pre>
                      <code data-trim data-noescape>
                                 public record TextStyle(Weight weight, Font font){}
@@ -225,82 +230,375 @@
                 <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
                     <pre><code>TextStyle = Weight ⨯ Font</code></pre>
                 </div>
-
-            </section>
-        </section>
-        <section>Algebraic Data Types
-            <h4>Sum Type</h4>
-
-            <section>
-                <p class="fragment custom blur highlight-current-green" data-fragment-index="1"> Think of it as an “OR”
-                    relationship.</p>
-                <p class="fragment custom blur highlight-current-green" data-fragment-index="2"> A Shape can be a sum
-                    type, as it could be a Circle OR a Square OR a Triangle.</p>
-                <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Defines variants.</p>
-
-                <!--            <aside class="notes">Shh, these are my private speaker notes here</aside>-->
+                </section>
             </section>
             <section>
-                <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
-                    <pre><code> Type A = Integer | Boolean </code></pre>
-                    <pre><code> Type B = String | Float </code></pre>
-                </div>
-                <div class="fragment custom blur highlight-current-green" data-fragment-index="2">
-                    <pre><code> Type C = A + B </code></pre>
-                </div>
+                <h4>Sum Type</h4>
+                <section>
+                    <p class="fragment custom blur highlight-current-green" data-fragment-index="1"> Think of it as an “OR”
+                        relationship.</p>
+                    <p class="fragment custom blur highlight-current-green" data-fragment-index="2"> A Shape can be a sum
+                        type, as it could be a Circle OR a Square OR a Triangle.</p>
+                    <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Defines variants.</p>
 
-                <aside class="notes">Could be able to hold any of the four possible values: Integer, Boolean, String, or
-                    Float.
-                    commutative A + B = B + A
-                </aside>
+                    <!--            <aside class="notes">Shh, these are my private speaker notes here</aside>-->
+                </section>
+                <section>
+                    <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
+                        <pre><code> Type A = Integer | Boolean </code></pre>
+                        <pre><code> Type B = String | Float </code></pre>
+                    </div>
+                    <div class="fragment custom blur highlight-current-green" data-fragment-index="2">
+                        <pre><code> Type C = A + B </code></pre>
+                    </div>
+
+                    <aside class="notes">Could be able to hold any of the four possible values: Integer, Boolean, String, or
+                        Float.
+                        commutative A + B = B + A
+                    </aside>
+                </section>
             </section>
-
-        </section>
-        <section>Algebraic Data Types
-            <h4>Combining Product and Sum Types</h4>
             <section>
-                <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
-                    <pre><code>DnsRecord(AValue(ttl, name, ipv4)
+                <h4>Combining Product and Sum Types</h4>
+                <section>
+                    <pre><code>
+                        DnsRecord(AValue(ttl, name, ipv4)
                         | AaaaValue(ttl, name, ipv6)
                         | CnameValue(ttl, name, alias)
                         | TxtValue(ttl, name, name))
                     </code></pre>
-                </div>
-                <div class="fragment custom blur highlight-current-green" data-fragment-index="2">
-                    <pre><code>DnsRecord(ttl, name, AValue(ipv4)
+                </section>
+                <section>
+                    <pre><code>
+                        DnsRecord(ttl, name, AValue(ipv4)
                         | AaaaValue(ipv6)
                         | CnameValue(alias)
-                        | TxtValue(value))</code></pre>
-                </div>
-                <div class="fragment custom blur" data-fragment-index="3">
+                        | TxtValue(value))
+                    </code></pre>
+                </section>
+                <section>
                     <h4>Distributive</h4>
                     <p>
-                        \( \color{orange} (a \cdot b + a \cdot c) \Leftrightarrow a \cdot (b + c) \)
+                    \( \color{orange} (a \cdot b + a \cdot c) \Leftrightarrow a \cdot (b + c) \)
                     </p>
-                </div>
-            </section>
-            <section>
-                <h5>Commutative</h5>
-                \( \color{blue} (a \cdot b) \Leftrightarrow (b \cdot a) \)
-                    <br>
-                    \( \color{red} (a + b) \Leftrightarrow (b + a) \)
-                </p>
-            </section>
-            <section>
-                <h5>Associative</h5>
-                <p>
-                    \( \color{green} (a + b) + c \Leftrightarrow a + (b + c) \)
-                    <br>
-                    \( \color{purple} (a \cdot b) \cdot c \Leftrightarrow a \cdot (b \cdot c) \)
-                </p>
-            </section>
+                </section>
+                <section>
+                    <h5>Commutative</h5>
+                    <p>
+                        \( \color{blue} (a \cdot b) \Leftrightarrow (b \cdot a) \)
+                        <br>
+                        \( \color{red} (a + b) \Leftrightarrow (b + a) \)
+                    </p>
+                </section>
+                <section>
+                    <h5>Associative</h5>
+                    <p>
+                        \( \color{green} (a + b) + c \Leftrightarrow a + (b + c) \)
+                        <br>
+                        \( \color{purple} (a \cdot b) \cdot c \Leftrightarrow a \cdot (b \cdot c) \)
+                    </p>
+                </section>
             <!--            <aside class="notes">Shh, these are my private speaker notes here</aside>-->
-        </section>
-        <section>Algebraic Data Types
-            Sum Type
-            <aside class="notes">Shh, these are my private speaker notes here</aside>
-        </section>
 
+            </section>
+        <section>Algebraic Data Types
+
+            <section>
+                <h4>Modern Java</h4>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="1">Records</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Sealed Interfaces</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Pattern Matching</p>
+            </section>
+            <section>
+                <h4>What about Enums?</h4>
+                <pre>
+                <code class="java" data-trim data-noescape data-line-numbers>
+enum Task {
+  NotStarted,
+  Started,
+  Completed,
+  Cancelled;
+}
+
+sealed interface TaskStatus{
+  record NotStarted(...) implements TaskStatus
+  record Started(...) implements TaskStatus
+  record Completed(...) implements TaskStatus
+  record Cancelled(...) implements TaskStatus
+}
+                </code>
+            </pre>
+
+                <aside class="notes">Shh, these are my private speaker notes here</aside>
+            </section>
+            <section>
+        <pre>
+                <code class="java" data-trim data-noescape data-line-numbers>
+enum Planet {
+  MERCURY (3.303e+23, 2.4397e6),
+  VENUS (4.869e+24, 6.0518e6),
+  EARTH (5.976e+24, 6.37814e6);
+
+  private final double mass;   // in kilogram
+  private final double radius; // in metres
+
+  Planet(double mass, double radius) {
+    this.mass = mass;
+    this.radius = radius;
+  }
+  private double mass() { return mass; }
+  private double radius() { return radius; }
+}
+              </code>
+            </pre>
+            </section>
+            <section>
+        <pre>
+                <code class="java" data-trim data-noescape data-line-numbers>
+sealed interface Celestial {
+    record Planet(String name, double mass, double radius)
+                    implements Celestial {}
+    record Star(String name, double mass, double temperature)
+                    implements Celestial {}
+    record Comet(String name, double period)
+                    implements Celestial {}
+}
+              </code>
+            </pre>
+            </section>
+        </section>
+        <section>The Visitor Pattern
+            <section data-auto-animate>
+
+<pre><code class="language-java fragment" data-noescape data-trim data-fragment-index="1">
+sealed interface Shape
+    permits Circle, Rectangle, Triangle, Pentagon {
+  <T> T accept(ShapeVisitor<T> visitor);
+}
+    </code><code class="language-java fragment" data-noescape data-trim data-fragment-index="2">
+interface ShapeVisitor<T> {
+  T visit(Circle circle);
+  T visit(Rectangle rectangle);
+  T visit(Triangle triangle);
+  T visit(Pentagon pentagon);
+}
+     </code></pre>
+            </section>
+            <section>
+    <pre><code class="language-java fragment" data-noescape data-trim data-fragment-index="1">
+record Circle(double r) implements Shape {
+
+  public <T> T accept(ShapeVisitor<> visitor) {
+    return visitor.visit(this);
+  }
+}
+    </code><code class="language-java fragment" data-noescape data-trim data-fragment-index="2">
+record Rectangle(double w, double h) implements Shape {
+
+  public <T> T accept(ShapeVisitor<T> visitor) {
+    return visitor.visit(this);
+  }
+}
+    </code><code class="language-java fragment" data-noescape data-trim data-fragment-index="3">
+record Triangle(double s1, double s2, double s3)
+        implements Shape {
+
+  public <T> T accept(ShapeVisitor<T> visitor) {
+    return visitor.visit(this);
+  }
+}
+    </code><code class="language-java fragment" data-noescape data-trim data-fragment-index="4">
+record Pentagon(double s) implements Shape {
+
+  public <T> T accept(ShapeVisitor<T> visitor) {
+    return visitor.visit(this);
+  }
+}
+    </code></pre>
+            </section>
+            <section data-auto-animate>
+         <pre>
+    <code class="language-java fragment" data-trim data-noescape>
+class AreaCalculator implements ShapeVisitor<Double> {
+
+  public Double visit(Circle circle) {
+    return PI * circle.r() * circle.r();
+  }
+
+  public Double visit(Rectangle rectangle) {
+    return rectangle.w() * rectangle.h();
+  }
+
+  public Double visit(Triangle tri) {
+    double s = (tri.s1() + tri.s2() + tri.s3()) / 2;
+    return sqrt(s * (s - tri.s1()) * (s - tri.s2())* (s - tri.s3()));
+  }
+
+  public Double visit(Pentagon p) {
+    return (0.25) * sqrt(5 * (5 + 2 * sqrt(5))) * p.s() * p.s();
+  }
+}</code>
+      </pre>
+            </section>
+            <section>
+                   <pre>
+    <code class="language-java fragment" data-trim data-noescape>
+class PerimeterCalculator implements ShapeVisitor<Double> {
+
+  public Double visit(Circle circle) {
+    return 2 * PI * circle.r();
+  }
+
+  public Double visit(Rectangle rectangle) {
+    return 2 * (rectangle.w() + rectangle.h());
+  }
+
+  public Double visit(Triangle triangle) {
+    return triangle.s1() + triangle.s2() + triangle.s3();
+  }
+
+  public Double visit(Pentagon pentagon) {
+    return 5 * pentagon.side();
+  }
+}</code></pre>
+            </section>
+            <section>
+<pre><code class="language-java fragment" data-trim data-noescape>
+class InfoVisitor implements ShapeVisitor<String> {
+  public String visit(Circle circle) {
+    return "Circle with radius: %.2f, area: %.2f, perimeter: %.2f"
+        .formatted(circle.r(), new AreaCalculator().visit(circle), new PerimeterCalculator().visit(circle));
+  }
+
+  public String visit(Rectangle rect) {
+    return "Rectangle with width: %.2f , height: %.2f, area: %.2f, perimeter: %.2f"
+        .formatted(rect.w(), rect.h(), new AreaCalculator().visit(rect), new PerimeterCalculator().visit(rect));
+  }
+
+  public String visit(Triangle tri) {
+    return "Triangle with sides: %.2f, %.2f, %.2f, area: %.2f, perimeter: %.2f"
+        .formatted(tri.s1(), tri.s2(), tri.s3(), new AreaCalculator().visit(tri),
+                                            new PerimeterCalculator().visit(tri));
+  }
+
+  public String visit(Pentagon pentagon) {
+    return "Pentagon with side: %.2f, area: %.2f, perimeter: %.2f"
+        .formatted(pent.side(), new AreaCalculator().visit(pent), new PerimeterCalculator().visit(pent));
+  }
+}
+</code></pre>
+            </section>
+
+            <section>
+                   <pre>
+    <code class="language-java fragment" data-trim data-noescape>
+class Shapes {
+  public static void main(String[] args) {
+    List<Shape> shapes = List.of(new Circle(5), new Triangle(3, 3, 3), new Rectangle(3, 5), new Pentagon(5.6));
+
+    InfoVisitor infoVisitor = new InfoVisitor();
+    ScaleVisitor scaleVisitor = new ScaleVisitor(2);
+
+    System.out.println("\nShapes:");
+    shapes.stream().map(s -> s.accept(infoVisitor)).forEach(System.out::println);
+  }
+}
+    </code></pre>
+            </section>
+
+        </section>
+        <section>Pattern Matching
+            <section>
+            <pre><code class="language-java fragment" data-trim data-noescape>
+sealed interface Shape
+                permits Circle, Rectangle, Triangle, Pentagon {}
+
+record Circle(double r) implements Shape {}
+record Rectangle(double w, double h) implements Shape {}
+record Triangle(double s1, double s2, double s3) implements Shape {}
+record Pentagon(double s) implements Shape {}
+            </code></pre>
+            </section>
+
+            <section>
+             <pre><code class="language-java fragment" data-trim data-noescape>
+static double area(Shape shape) {
+  return switch (shape) {
+    case Circle(var r) -> PI * r * r;
+    case Rectangle(var w, var h) -> w * h;
+    case Triangle(var s1, var s2, var s3) -> {
+            double s = (s1 + s2 + s3) / 2;
+            yield sqrt(s * (s - s1) * (s - s2) * (s - s3));}
+    case Pentagon(var s) -> (0.25) * sqrt(5 * (5 + 2 * sqrt(5))) * s * s;
+   };
+}
+                   </code></pre>
+            </section>
+            <section>
+               <pre><code class="language-java fragment" data-trim data-noescape>
+ static double perimeter(Shape shape) {
+    return switch (shape) {
+      case Circle(var r) -> 2 * PI * r;
+      case Rectangle(var w, var h) -> 2 * (w + h);
+      case Triangle(var s1, var s2, var s3) -> s1 + s2 + s3;
+      case Pentagon(var s) -> 5 * s;
+    };
+  }
+               </code></pre>
+            </section>
+            <section>
+               <pre><code class="language-java fragment" data-trim data-noescape>
+   static String info(Shape shape) {
+    return switch (shape) {
+      case Circle c ->
+          "Circle with radius: %.2f, area: %.2f, perimeter: %.2f"
+                   .formatted(c.r(), area(c), perimeter(c));
+      case Rectangle r ->
+          "Rectangle with width: %.2f , height: %.2f, area: %.2f, perimeter: %.2f"
+                   .formatted(r.w(), r.h(), area(r), perimeter(r));
+      case Triangle t ->
+          "Triangle with sides: %.2f, %.2f, %.2f, area: %.2f, perimeter: %.2f"
+                   .formatted(t.s1(), t.s2(), t.s3(), area(t), perimeter(t));
+      case Pentagon p ->
+          "Pentagon with side: %.2f, area: %.2f, perimeter: %.2f"
+                   .formatted(p.s(), area(p), perimeter(p));
+    };
+               </code></pre>
+            </section>
+
+        </section>
+        <section>
+            <h4>The Expression Problem</h4>
+            <h4 class="fragment custom blur highlight-blue" data-fragment-index="1">The challenge of extending data structures and operations independently.</h4>
+
+            <ul>
+                <li class="fragment custom blur  highlight-current-green" data-fragment-index="1">
+                    <strong>Add new data types</strong> Without modifying existing code that operates on those data types.
+                </li>
+                <li class="fragment custom blur highlight-current-green" data-fragment-index="2">
+                    <strong>Add new operations</strong> Without modifying existing data types.
+                </li>
+            </ul>
+        </section>
+            <section>Visitor Pattern
+                <section>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="1">Adding new operations (Easy)</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Adding new data type (Hard)</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Verbose</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="4">No Exhaustiveness Checking</p>
+                </section>
+                </section>
+            <section>Pattern Matching
+                <section>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="1">Adding new operations (Easy)</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Adding new data type (Easier)</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="3">More concise</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="4">Exhaustiveness Checking</p>
+                </section>
+                <aside class="notes" data-markdown>
+                    In summary, ADTs, particularly in modern Java with records, sealed interfaces, and pattern matching, offer a more elegant, type-safe, and maintainable approach to modelling complex data and their behaviour, compared to traditional techniques like the Visitor pattern.
+                </aside>
+            </section>
         <section data-background-color="aquamarine">
             <h2>🍦</h2>
         </section>
@@ -330,7 +628,6 @@
     // - https://revealjs.com/config/
     Reveal.initialize({
         hash: true,
-
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
     });
