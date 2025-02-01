@@ -1,40 +1,339 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <title>reveal.js</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/catppuccin.css">
+    <!--		<link rel="stylesheet" href="dist/theme/black.css">-->
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <style>
+        .fragment.blur {
+            filter: blur(100px);
+        }
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        .fragment.blur.visible {
+            filter: none;
+        }
+    </style>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+</head>
+<body>
+
+<div class="reveal">
+    <div class="slides">
+        <section data-background-transition="slide" data-background="assets/adt_pattern_matching_java.webp"></section>
+        <section>
+            <div data-markdown>## Domain Modelling</div>
+            <section>
+
+                <aside class="notes" data-markdown>
+                    ### When we develop an application
+                    ### We model some aspect of business to describe and solve a problem.
+                    ### We do this by creating a conceptual representation of the real-world.
+                    This allows us to understand the "domain" where our software operates.
+
+                    ### Like creating a blueprint before constructing a building.
+                    ### identify the key elements, their relationships, and how they interact.
+                    The blueprint guides the software design and ensures it
+                    accurately reflects the business problem.
+
+                </aside>
+            </section>
+            <section>
+
+                <ol>
+                    <li data-markdown class="fragment custom blur highlight-current-green" data-fragment-index="1">
+                        **Identify Key Concepts**
+                    </li>
+                    <li
+                            data-markdown class="fragment custom blur highlight-current-green" data-fragment-index="2">
+                        **Create a Model**
+                    </li>
+                    <li data-markdown class="fragment custom blur highlight-current-green" data-fragment-index="3">
+                        **Define
+                        Attributes and
+                        Behaviour**
+
+                    </li>
+                    <li data-markdown class="fragment custom blur highlight-current-green" data-fragment-index="4">
+                        **Refine the
+                        Model**
+                    </li>
+                </ol>
+
+
+                <aside class="notes" data-markdown>
+                    - Start by identifying the important concepts, entities, and
+                    relationships within the
+                    domain.
+                    - Represent these concepts and their relationships using a model such as a class
+                    diagram.
+                    - For each concept, we define its attributes (properties) and behaviour (actions).
+                    - Iteratively refine the model based on feedback, further analysis, and discussions
+                    with domain experts.
+                </aside>
+            </section>
+        </section>
+        <section>
+            <h2>Relating to Types and Objects</h2>
+            <!--            <section>-->
+            <!--                <aside class="notes" data-markdown>Domain modelling is closely tied to the concepts of types and objects-->
+            <!--                    in object-oriented programming:-->
+            <!--                </aside>-->
+            <!--                <aside class="notes">For each concept, we define its attributes (properties) and behaviour-->
+            <!--                    (actions).-->
+            <!--                </aside>-->
+            <!--                <aside class="notes">Iteratively refine the model based on feedback, further analysis, and-->
+            <!--                    discussions-->
+            <!--                    with domain experts.-->
+            <!--                </aside>-->
+            <!--                <aside class="notes">For each concept, we define its attributes (properties) and behaviour-->
+            <!--                    (actions).-->
+            <!--                </aside>-->
+            <!--            </section>-->
+            <section>
+                <ul>
+                    <li class="fragment custom blur " data-fragment-index="1">
+                        Concepts<span class=" fragment custom blur highlight-green"
+                                      data-fragment-index="2"> =>  Types </span>
+                    </li>
+                    <li class="fragment custom blur " data-fragment-index="3">
+                        Instances<span class="fragment custom blur highlight-green"
+                                       data-fragment-index="4"> => Objects </span>
+                    </li>
+                    <li class="fragment custom blur " data-fragment-index="5">
+                        Attributes <span class="fragment custom blur highlight-green" data-fragment-index="6"> => Properties (fields) </span>
+
+                    </li>
+                    <li class="fragment custom blur " data-fragment-index="7">
+                        Behaviour <span class="fragment custom blur highlight-green"
+                                        data-fragment-index="8"> => Methods </span>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <h2>Relating to an Algebra</h2>
+            <!--            <section>-->
+            <!--                <aside class="notes" data-markdown>Domain modelling is closely tied to the concepts of types and objects-->
+            <!--                    in object-oriented programming:-->
+            <!--                </aside>-->
+            <!--                <aside class="notes">For each concept, we define its attributes (properties) and behaviour-->
+            <!--                    (actions).-->
+            <!--                </aside>-->
+            <!--                <aside class="notes">Iteratively refine the model based on feedback, further analysis, and-->
+            <!--                    discussions-->
+            <!--                    with domain experts.-->
+            <!--                </aside>-->
+            <!--                <aside class="notes">For each concept, we define its attributes (properties) and behaviour-->
+            <!--                    (actions).-->
+            <!--                </aside>-->
+            <!--            </section>-->
+            <section>
+                <h4 class="fragment custom blur highlight-blue" data-fragment-index="1">Algebraic Structures</h4>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Types => Sets</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Relationships =>
+                    Functions</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="4">Operations</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="5">Laws & Properties</p>
+
+            </section>
+        </section>
+        <section><h2>Relating to an Algebra</h2>
+            <section>
+                <h4 class="fragment custom blur highlight-blue" data-fragment-index="1">Connecting the Pieces</h4>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Domain model informs the
+                    Algebra</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Algebra provides
+                    Structure</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="4">Implementation</p>
+            </section>
+        </section>
+        <section><h2>Relating to an Algebra</h2>
+            <section>
+                <h4 class="fragment custom blur highlight-blue" data-fragment-index="1">Benefits of this Approach</h4>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Rigour and Precision</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Testability</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="4">Maintainability</p>
+            </section>
+        </section>
+        <section>Example
+        </section>
+        <section><h3>Banking System</h3>
+            <div class="fragment custom blur " data-fragment-index="1">
+                <h4>Domain Concepts</h4>
+                <p class=" fragment custom blur highlight-green" data-fragment-index="2">Account, Transaction,
+                    Balance </p>
+            </div>
+            <div class="fragment custom blur " data-fragment-index="3">
+                <h4>Operations</h4>
+                <p class=" fragment custom blur highlight-green" data-fragment-index="4">deposit, withdraw, transfer</p>
+            </div>
+
+        </section>
+        <section><h3>Banking System</h3>
+
+            <div class="fragment custom blur " data-fragment-index="1">
+                Algebraic laws: Consistency<p class="fragment custom blur highlight-green" data-fragment-index="2">
+                withdraw operation requires sufficient funds </p>
+            </div>
+
+        </section>
+        <section><h3>Banking System</h3>
+            <div class="fragment custom blur " data-fragment-index="1">
+                Algebraic laws: Associativity<p class="fragment custom blur highlight-green" data-fragment-index="2">
+                Multiple deposits and withdrawals result in same final balance regardless of order</p>
+            </div>
+
+        </section>
+        <section>Algebraic Data Types
+
+            <p>ADT algebra consists of two primary operators</p>
+            <ul>
+                <li>Product x</li>
+                <li>Sum +</li>
+            </ul>
+        </section>
+        <section>Algebraic Data Types
+            <h4>Product Type</h4>
+            <section>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="1"> Think of it as an “AND”
+                    relationship.</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Point is a product
+                    type consisting of an x AND y coordinate.</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="3">tuples, POJOs, structs,
+                    or
+                    records</p>
+
+                <!--            <aside class="notes">Shh, these are my private speaker notes here</aside>-->
+            </section>
+            <section>
+                 <pre>
+                     <code data-trim data-noescape>
+                                public record TextStyle(Weight weight, Font font){}
+                                public enum Font { SERIF, SANS_SERIF, MONOSPACE }
+                                public enum Weight { NORMAL, LIGHT, HEAVY }
+                 </code>
+                 </pre>
+                <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
+                    <pre><code>TextStyle = Weight ⨯ Font</code></pre>
+                </div>
+
+            </section>
+        </section>
+        <section>Algebraic Data Types
+            <h4>Sum Type</h4>
+
+            <section>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="1"> Think of it as an “OR”
+                    relationship.</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="2"> A Shape can be a sum
+                    type, as it could be a Circle OR a Square OR a Triangle.</p>
+                <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Defines variants.</p>
+
+                <!--            <aside class="notes">Shh, these are my private speaker notes here</aside>-->
+            </section>
+            <section>
+                <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
+                    <pre><code> Type A = Integer | Boolean </code></pre>
+                    <pre><code> Type B = String | Float </code></pre>
+                </div>
+                <div class="fragment custom blur highlight-current-green" data-fragment-index="2">
+                    <pre><code> Type C = A + B </code></pre>
+                </div>
+
+                <aside class="notes">Could be able to hold any of the four possible values: Integer, Boolean, String, or
+                    Float.
+                    commutative A + B = B + A
+                </aside>
+            </section>
+
+        </section>
+        <section>Algebraic Data Types
+            <h4>Combining Product and Sum Types</h4>
+            <section>
+                <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
+                    <pre><code>DnsRecord(AValue(ttl, name, ipv4)
+                        | AaaaValue(ttl, name, ipv6)
+                        | CnameValue(ttl, name, alias)
+                        | TxtValue(ttl, name, name))
+                    </code></pre>
+                </div>
+                <div class="fragment custom blur highlight-current-green" data-fragment-index="2">
+                    <pre><code>DnsRecord(ttl, name, AValue(ipv4)
+                        | AaaaValue(ipv6)
+                        | CnameValue(alias)
+                        | TxtValue(value))</code></pre>
+                </div>
+                <div class="fragment custom blur" data-fragment-index="3">
+                    <h4>Distributive</h4>
+                    <p>
+                        \( \color{orange} (a \cdot b + a \cdot c) \Leftrightarrow a \cdot (b + c) \)
+                    </p>
+                </div>
+            </section>
+            <section>
+                <h5>Commutative</h5>
+                \( \color{blue} (a \cdot b) \Leftrightarrow (b \cdot a) \)
+                    <br>
+                    \( \color{red} (a + b) \Leftrightarrow (b + a) \)
+                </p>
+            </section>
+            <section>
+                <h5>Associative</h5>
+                <p>
+                    \( \color{green} (a + b) + c \Leftrightarrow a + (b + c) \)
+                    <br>
+                    \( \color{purple} (a \cdot b) \cdot c \Leftrightarrow a \cdot (b \cdot c) \)
+                </p>
+            </section>
+            <!--            <aside class="notes">Shh, these are my private speaker notes here</aside>-->
+        </section>
+        <section>Algebraic Data Types
+            Sum Type
+            <aside class="notes">Shh, these are my private speaker notes here</aside>
+        </section>
+
+        <section data-background-color="aquamarine">
+            <h2>🍦</h2>
+        </section>
+        <section data-background-color="rgb(70, 70, 255)">
+            <h2>🍰</h2>
+        </section>
+        <section>
+            <section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+                <h2>🐟</h2>
+            </section>
+            <section data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+                <h2>🐳</h2>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script src="plugin/math/math.js"></script>
+<script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+    });
+</script>
+</body>
 </html>
