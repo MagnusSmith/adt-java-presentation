@@ -30,6 +30,9 @@
           white-space: pre; /* Preserve spaces and line breaks in code */
       }
 
+      .reveal .highlight-blue-initially {
+          color: blue;
+      }
   </style>
 
 </head>
@@ -118,7 +121,7 @@
     <section>
       <h3>Relating to an Algebra</h3>
       <section>
-        <h4 class="fragment custom blur highlight-blue" data-fragment-index="1">Algebraic Structures</h4>
+        <h4 class="fragment custom blur highlight-blue-initially" data-fragment-index="1">Algebraic Structures</h4>
         <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Types => Sets</p>
         <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Relationships =>
           Functions</p>
@@ -146,14 +149,12 @@
     </section>
     <section><h3>Relating to an Algebra</h3>
       <section>
-        <h4 class="fragment custom blur highlight-blue" data-fragment-index="1">Connecting the Pieces</h4>
+        <h4 class="fragment custom blur highlight-blue-initially" data-fragment-index="1">Connecting the Pieces</h4>
         <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Domain model informs the Algebra</p>
         <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Algebra provides Structure</p>
         <p class="fragment custom blur highlight-current-green" data-fragment-index="4">Implementation</p>
         <aside class="notes" contenteditable>
           <h2>Putting it all together</h2>
-          <p> The relationship between a domain model and an algebra might seem abstract at first, but it’s a powerful concept with practical implications in
-            software design, especially when dealing with complex systems.</p>
           <ul>
             <li>The domain model provides the basis for defining the sets and operations in the algebra. It ensures that the algebra accurately reflects our
               real-world problem.
@@ -170,16 +171,14 @@
     </section>
     <section><h3>Relating to an Algebra</h3>
       <section>
-        <h4 class="fragment custom blur highlight-blue" data-fragment-index="1">Benefits of this Approach</h4>
-        <ul><
+        <h4 class="fragment custom blur highlight-blue-initially" data-fragment-index="1">Benefits of this Approach</h4>
+        <ul>
           <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Rigour and Precision</li>
           <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Testability</li>
           <li class="fragment custom blur highlight-current-green" data-fragment-index="4">Maintainability</li>
         </ul>
         <aside class="notes" contenteditable>
           <h2>What does this give us?</h2>
-          <p> The relationship between a domain model and an algebra might seem abstract at first, but it’s a powerful concept with practical implications in
-            software design, especially when dealing with complex systems.</p>
           <ul>
             <li>(R&P) Using an algebraic approach brings rigour and precision to the domain model. It helps us clearly define the behaviour of a system.</li>
             <li>(Testability)Algebraic laws can be used to create comprehensive test cases, ensuring that your implementation adheres to the domain rules.</li>
@@ -192,58 +191,55 @@
     </section>
     <section><h3>Banking Example</h3>
       <section>
-        <div class="fragment custom blur " data-fragment-index="1">
-          <h4>Domain Concepts</h4>
-          <p class=" fragment custom blur highlight-green" data-fragment-index="2">Account, Transaction,
+          <h4 class="highlight-blue-initially" data-fragment-index="0">Domain Concepts</h4>
+          <p class=" fragment custom blur highlight-green" data-fragment-index="1">Account, Transaction,
             Balance </p>
-        </div>
-        <div class="fragment custom blur " data-fragment-index="3">
-          <h4>Operations</h4>
-          <p class=" fragment custom blur highlight-green" data-fragment-index="4">deposit, withdraw,
+        <div class="fragment custom blur" data-fragment-index="2">
+          <h4 class="highlight-blue-initially">Operations</h4>
+          <p class=" fragment custom blur highlight-green" data-fragment-index="3">deposit, withdraw,
             transfer</p>
         </div>
         <aside class="notes" contenteditable>
           <h2>Consider a banking system. </h2>
           <ul>
             <li>Your domain model might include concepts like “Account” and “Transaction.”</li>
-            <li>We could define an algebra with operations like “deposit,” “withdraw,” and “transfer.” These operations would need to satisfy certain laws</li>
+            <li>We could define an algebra with operations like “deposit,” “withdraw,” and “transfer.” /li>
           </ul>
         </aside>
       </section>
       <section>
-        <div class="fragment custom blur " data-fragment-index="1">
-          Algebraic laws: Consistency<p class="fragment custom blur highlight-green" data-fragment-index="2">
+        <h4 class="highlight-blue-initially">Algebraic laws: Consistency</h4>
+        <p class="fragment custom blur highlight-green" data-fragment-index="1">
           withdraw operation requires sufficient funds </p>
-        </div>
+        <aside class="notes">
+          These operations would need to satisfy certain laws
+        </aside>
       </section>
       <section>
-        <div class="fragment custom blur " data-fragment-index="1">
-          Algebraic laws: Associativity<p class="fragment custom blur highlight-green" data-fragment-index="2">
+          <h4 class="highlight-blue-initially">Algebraic laws: Associativity</h4>
+        <p class="fragment custom blur highlight-green" data-fragment-index="1">
           Multiple deposits and withdrawals result in same final balance regardless of order</p>
-        </div>
       </section>
       <aside class="notes" contenteditable>
         <p>By implementing these algebraic laws in our code, we ensure that the banking system behaves correctly and consistently.</p>
       </aside>
     </section>
-    <section><h3>Algebraic Data Types</h3>
+    <section>
+      <h3>Algebraic Data Types</h3>
       <section>
-        <aside class="notes" contenteditable>
-          <h2>Algebraic Data Types (ADTs) are a way to structure data in functional programming languages.</h2>
-          <p>They provide a mechanism to create composite data types by combining other simpler types. </p>
-          <p>ADTs help us to model complex data structures using simpler building blocks, much like building with LEGO. </p>
-          <p>Think of them as custom, compound data types that you design for your specific needs.</p>
-        </aside>
-      </section>
-      <section>
-        <h4 class="fragment custom blur highlight-blue" data-fragment-index="1">Benefits</h4>
+        <h4 class="highlight-blue-initially" data-fragment-index="0">Features</h4>
         <ul>
+          <li class="fragment custom blur highlight-current-green" data-fragment-index="1">Composite</li>
           <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Readability</li>
           <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Constraint Enforcement</li>
           <li class="fragment custom blur highlight-current-green" data-fragment-index="4">Reduce Boilerplate</li>
         </ul>
         <aside class="notes" contenteditable>
+          <h2>Algebraic Data Types (ADTs) are a way to structure data in functional programming languages.</h2>
           <ul>
+            <li>
+              They provide a mechanism to create composite data types by combining other simpler types. Model complex data structures using simpler building blocks, much like building with LEGO.
+            </li>
             <li>(Readability) make code more readable by explicitly defining the structure and possible values of complex data. This makes it easier to
               understand and reason about the code, improving maintainability.
             </li>
@@ -259,11 +255,11 @@
         </aside>
       </section>
       <section>
-        <h4 class="fragment custom blur highlight-blue" data-fragment-index="1">Why Algebraic?</h4>
+        <h4 class="highlight-blue-initially" data-fragment-index="0">Why Algebraic?</h4>
         <ul>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Objects</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Operations</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="4">Laws</li>
+          <li class="fragment custom blur highlight-current-green" data-fragment-index="1">Objects</li>
+          <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Operations</li>
+          <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Laws</li>
         </ul>
         <aside class="notes" contenteditable>
           <h2>Why Algebraic?</h2>
@@ -275,7 +271,7 @@
         </aside>
       </section>
       <section>
-        <div class="highlight-blue fragment" data-fragment-index="1">
+        <div class="highlight-blue-initially fragment" data-fragment-index="1">
           The algebra consists of two primary operators
         </div>
         <ul class="fragment" data-fragment-index="2">
@@ -343,14 +339,14 @@
         </aside>
       </section>
       <section>
-        <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
+        <div>
           <pre><code> Type A = Integer | Boolean </code></pre>
           <pre><code> Type B = String | Float </code></pre>
         </div>
-        <div class="fragment custom blur highlight-current-green" data-fragment-index="2">
+        <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
           <pre><code> Type C = A + B </code></pre>
         </div>
-        <div class="fragment custom blur highlight-current-green" data-fragment-index="3">
+        <div class="fragment custom blur highlight-current-green" data-fragment-index="2">
           <pre><code> 4 = 2 + 2</code></pre>
         </div>
 
@@ -421,7 +417,7 @@ DnsRecord(ttl, name, AValue(ipv4)
     <section>Algebraic Data Types
 
       <section>
-        <h4 class="fragment custom blur highlight-blue" data-fragment-index="0">Modern Java</h4>
+        <h4 class="fragment custom blur highlight-blue-initially" data-fragment-index="0">Modern Java</h4>
         <p class="fragment custom blur highlight-current-green" data-fragment-index="1">Records</p>
         <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Sealed Interfaces</p>
         <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Pattern Matching</p>
@@ -527,7 +523,7 @@ sealed interface Celestial {
     </section>
     <section><h4>The Visitor Pattern</h4>
       <section>
-        <pre><code class="language-java fragment fade-out" data-noescape data-trim data-fragment-index="0">
+        <pre><code class="language-java" data-noescape data-trim data-fragment-index="0">
 sealed interface Shape
     permits Circle, Rectangle, Triangle, Pentagon {
   <T> T accept(ShapeVisitor<T> visitor);
@@ -558,7 +554,7 @@ interface ShapeVisitor<T> {
         </aside>
       </section>
       <section>
-        <pre><code class="language-java fragment" data-noescape data-trim data-fragment-index="0">
+        <pre><code class="language-java " data-noescape data-trim>
 record Circle(double r) implements Shape {
 
   public <T> T accept(ShapeVisitor<> visitor) {
@@ -687,7 +683,7 @@ class InfoVisitor implements ShapeVisitor<String> {
         </aside>
       </section>
       <section>
-        <pre><code class="language-java fragment " data-trim data-noescape data-fragment-index="1">
+        <pre><code class="language-java" data-trim data-noescape data-fragment-index="0">
 class Shapes {
   public static void main(String[] args) {
     List<Shape> shapes = List.of(new Circle(5), new Triangle(3, 3, 3), new Rectangle(3, 5), new Pentagon(5.6));
@@ -698,7 +694,7 @@ class Shapes {
   }
 }
         </code>
-          <code class="fragment" data-trim data-noescape data-fragment-index="2">
+          <code class="fragment" data-trim data-noescape data-fragment-index="1">
 Shapes: [Circle[radius=5.0], Triangle[side1=3.0, side2=3.0, side3=3.0],
           Rectangle[width=3.0, height=5.0], Pentagon[side=5.6]]
 Circle with radius: 5.00, area: 78.54, perimeter: 31.42
@@ -711,7 +707,7 @@ Pentagon with side: 5.60, area: 53.95, perimeter: 28.00
     <section>
       <h4>Pattern Matching</h4>
       <section>
-            <pre><code class="language-java fragment" data-trim data-noescape>
+            <pre><code class="language-java" data-trim data-noescape>
 sealed interface Shape
                 permits Circle, Rectangle, Triangle, Pentagon {}
 
@@ -727,7 +723,7 @@ record Pentagon(double s) implements Shape {}
       </section>
 
       <section>
-             <pre><code class="language-java fragment" data-trim data-noescape>
+             <pre><code class="language-java" data-trim data-noescape>
 static double area(Shape shape) {
   return switch (shape) {
     case Circle(var r) -> PI * r * r;
@@ -748,7 +744,7 @@ static double area(Shape shape) {
         </aside>
       </section>
       <section>
-               <pre><code class="language-java fragment" data-trim data-noescape>
+               <pre><code class="language-java" data-trim data-noescape>
  static double perimeter(Shape shape) {
     return switch (shape) {
       case Circle(var r) -> 2 * PI * r;
@@ -760,7 +756,7 @@ static double area(Shape shape) {
                </code></pre>
       </section>
       <section>
-               <pre><code class="language-java fragment" data-trim data-noescape>
+               <pre><code class="language-java" data-trim data-noescape>
    static String info(Shape shape) {
     return switch (shape) {
       case Circle c ->
@@ -782,7 +778,8 @@ static double area(Shape shape) {
     </section>
     <section>
       <h4>The Expression Problem</h4>
-      <h4 class="fragment custom blur highlight-blue" data-fragment-index="1">The challenge of extending data
+      <section>
+      <h4 class="highlight-blue-initially">The challenge of extending data
         structures and operations independently.</h4>
 
       <ul>
@@ -799,6 +796,7 @@ static double area(Shape shape) {
         Essentially, it's about how difficult it can be to add both new data types AND new operations that work on those types without constantly having to change existing code.
         Ideally, we want our code to be flexible enough to accommodate these extensions independently.
       </aside>
+      </section>
     </section>
     <section><h4>Visitor Pattern</h4>
       <section>
