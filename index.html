@@ -24,7 +24,7 @@
         .reveal pre code {
             display: block; /* Ensure block-level layout */
             overflow-y: auto; /* Add vertical scrollbar when needed */
-            max-height: 400px; /* Set maximum height for the code block */
+            max-height: 500px; /* Set maximum height for the code block */
             word-wrap: normal; /* Prevent text wrapping to keep lines intact */
             white-space: pre; /* Preserve spaces and line breaks in code */
         }
@@ -939,14 +939,28 @@ sealed interface Celestial {
             </section>
         </section>
         <section data-auto-animate><h3>The Visitor Pattern</h3>
-
-
           <section data-auto-animate>
             <div class="fragment custom blur highlight-current-green check" data-fragment-index="1">
               <h5>Purpose</h5>
               <p>Handle operations on different data
                 types within a hierarchy of objects without
                 modifying the structure of those objects themselves.<p></div>
+              <aside class="notes">
+                  <h4>
+                      Let's talk about the  Visitor pattern. It is a gang of 4 behavioral design pattern.
+                  </h4>
+                  <p>
+                      Traditionally, Java developers used the Visitor pattern to operate on different data
+                      types within a hierarchy without modifying the structure of those objects themselves. </p>
+                  <p>It achieves this by separating the
+                      operation's logic into a separate <em>visitor</em> class.
+                      However,
+                      this approach has several drawbacks, as we will see when we compare using a sum type with
+                      Pattern Matching
+                  </p>
+              </aside>
+          </section>
+            <section data-auto-animate>
         <pre><code class="language-java fragment" data-noescape data-trim data-fragment-index="2">
 sealed interface Shape
     permits Circle, Rectangle, Triangle, Pentagon {
@@ -961,18 +975,6 @@ interface ShapeVisitor&lt;T&gt; {
 }
           </code></pre>
                 <aside class="notes">
-                    <h4>
-                        Let's talk about the  Visitor pattern. It is a gang of 4 behavioral design pattern.
-                    </h4>
-                    <p>
-                        Traditionally, Java developers used the Visitor pattern to operate on different data
-                        types within a hierarchy without modifying the structure of those objects themselves. </p>
-                      <p>It achieves this by separating the
-                        operation's logic into a separate <em>visitor</em> class.
-                        However,
-                        this approach has several drawbacks, as we will see when we compare using a sum type with
-                        Pattern Matching
-                    </p>
                     <ul>
                         <li>Shape is a sealed interface, only permitting Circle, Rectangle, Triangle and Pentagon to
                             implement it.
@@ -984,7 +986,7 @@ interface ShapeVisitor&lt;T&gt; {
                 </aside>
             </section>
             <section data-auto-animate>
-        <pre><code class="language-java " data-noescape data-trim>
+        <pre><code class="language-java" data-noescape data-trim>
 record Circle(double r) implements Shape {
 
   public &lt;T&gt; T accept(ShapeVisitor&lt;T&gt; visitor) {
