@@ -1,462 +1,631 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>reveal.js</title>
+    <title>reveal.js</title>
 
-  <link rel="stylesheet" href="dist/reset.css">
-  <link rel="stylesheet" href="dist/reveal.css">
-  <link rel="stylesheet" href="dist/theme/catppuccin.css">
-  <!-- Theme used for syntax highlighted code -->
-  <link rel="stylesheet" href="plugin/highlight/monokai.css">
-  <style>
-      .fragment.blur {
-          filter: blur(100px);
-      }
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/catppuccin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <style>
+        .fragment.blur {
+            filter: blur(100px);
+        }
 
-      .fragment.blur.visible {
-          filter: none;
-      }
+        .fragment.blur.visible {
+            filter: none;
+        }
 
-      .reveal pre code {
-          display: block; /* Ensure block-level layout */
-          overflow-y: auto; /* Add vertical scrollbar when needed */
-          max-height: 400px; /* Set maximum height for the code block */
-          word-wrap: normal; /* Prevent text wrapping to keep lines intact */
-          white-space: pre; /* Preserve spaces and line breaks in code */
-      }
+        .reveal pre code {
+            display: block; /* Ensure block-level layout */
+            overflow-y: auto; /* Add vertical scrollbar when needed */
+            max-height: 400px; /* Set maximum height for the code block */
+            word-wrap: normal; /* Prevent text wrapping to keep lines intact */
+            white-space: pre; /* Preserve spaces and line breaks in code */
+        }
 
-      .reveal .highlight-blue-initially {
-          color: blue;
-      }
-  </style>
+        .reveal .highlight-blue-initially {
+            color: blue;
+        }
+
+        /*.reveal .no-bullets {*/
+        /*  list-style-type: none;*/
+        /*}*/
+
+
+        .reveal ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .reveal ul li {
+            padding-left: 1.5em;
+            position: relative;
+        }
+
+        /* Solid checkmark icon */
+        .reveal ul li.check::before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            content: "\f00c";
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*color: lightblue;*/
+        }
+
+        /* Star icon */
+        .reveal ul li.star::before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            content: "\f005";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+
+    </style>
 
 </head>
 <body>
 
 <div class="reveal">
-  <div class="slides">
-    <section data-background-transition="slide" data-background="assets/adt_pattern_matching_java.webp"></section>
-    <section><h3>Domain Modelling</h3>
-      <section>
-        <aside class="notes" contenteditable>
-          <h2>When we develop an application</h2>
-          <p> Usually we need to model some business problem by creating a conceptual model of the real-world.</p>
-          <p>This helps us understand the <em><b>domain</b></em> where our software operates</p>
-          <p>Think of it like developing a blueprint before constructing a building</p>
-          <p>It guides the software design and ensures it accurately reflects the business problem.</p>
-        </aside>
-      </section>
-      <section>
-        <h4 class="custom blur highlight-blue-initially">Essential steps</h4>
-        <ol>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="1">Identify Key
-            Concepts
-          </li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Create a Model</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Define Attributes
-            and Behaviour
-          </li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="4">Refine the Model
-          </li>
-        </ol>
-        <aside class="notes" contenteditable>
-          <h2>Essential steps</h2>
-          <ul>
-            <li>Start by identifying the important concepts, entities, and relationships within the
-              domain.
-            </li>
-            <li>Model these concepts and their relationships using diagrams. classes</li>
-            <li>For each concept, we define its attributes (properties) and behaviour (actions).</li>
-            <li>Refine the model iteratively based on feedback, further analysis, and discussions with
-              domain experts.
-            </li>
-          </ul>
-        </aside>
-      </section>
-    </section>
-    <section>
-      <h3>Relating to Types and Objects</h3>
-      <section>
-        <ul>
-          <li class="fragment custom blur " data-fragment-index="1">
-            Concepts<span class=" fragment custom blur highlight-green"
-                          data-fragment-index="2"> =>  Types </span>
-          </li>
-          <li class="fragment custom blur " data-fragment-index="3">Instances<span
-              class="fragment custom blur highlight-green"
-              data-fragment-index="4"> => Objects </span>
-          </li>
-          <li class="fragment custom blur " data-fragment-index="5">
-            Attributes <span class="fragment custom blur highlight-green" data-fragment-index="6"> => Properties (fields) </span>
+    <div class="slides">
+        <section data-background-transition="slide" data-background="assets/adt_pattern_matching_java.webp"></section>
+        <section data-auto-animate><h3>Domain Modelling</h3>
+            <section data-auto-animate>
+                <aside class="notes" contenteditable>
+                    <h2>When we develop an application</h2>
+                    <ul>
+                        <li>Model some business problem by creating a conceptual model of the real-world</li>
+                        <li>Its cheaper and easier to explore the business context that the software system is being
+                            designed to address.
+                        </li>
+                        <li>It helps us understand the <em><b>domain</b></em> where our software operates</li>
+                        <li>Think of it like developing a blueprint before constructing a building</li>
+                        <li>It guides the software design and ensures it accurately reflects the business problem.</li>
+                    </ul>
+                    <p>Lets look at how we go about creating a model.</p>
+                </aside>
+            </section>
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially">Essential steps</h4>
+                <ol>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Identify Key
+                        Concepts
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">Create a
+                        Model
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">Define
+                        Attributes
+                        and Behaviour
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="4">Refine the
+                        Model
+                    </li>
+                </ol>
+                <aside class="notes" contenteditable>
+                    <h2>Essential steps</h2>
+                    <ul>
+                        <li>Start by identifying the important concepts, entities, and relationships within the
+                            domain.
+                        </li>
+                        <li>Model these concepts and their relationships using diagrams. classes</li>
+                        <li>For each concept, we define its attributes (properties) and behaviour (actions).</li>
+                        <li>Refine the model iteratively based on feedback, further analysis, through discussions with
+                            domain experts.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+        </section>
+        <section data-auto-animate>
+            <h3>Relating to Types and Objects</h3>
+            <section data-auto-animate>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">
+                        Concepts<span class="fragment custom blur highlight-red"
+                                      data-fragment-index="2"> =>  Types </span>
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">
+                        Instances<span
+                            class="fragment custom blur highlight-red"
+                            data-fragment-index="4"> => Objects </span>
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="5">
+                        Attributes <span class="fragment custom blur highlight-red" data-fragment-index="6"> => Properties (fields) </span>
 
-          </li>
-          <li class="fragment custom blur " data-fragment-index="7">
-            Behaviour <span class="fragment custom blur highlight-green"
-                            data-fragment-index="8"> => Methods </span>
-          </li>
-        </ul>
-        <aside class="notes" contenteditable>
-          <h2> Domain modelling is closely tied to the concepts of types and objects in object-oriented programming:</h2>
-          <ul>
-            <li>(Concepts) in the domain model often translate directly into types (classes) in our code. For example, the “Book” concept might become a Book
-              class.
-            </li>
-            <li>(Instances) of these types represent specific objects in the domain. Each Book object would represent a particular book in the library.</li>
-            <li>(Attributes) Attributes in the domain model become properties (fields) of the class.</li>
-            <li>(Behaviour) The behaviour defined in the domain model is implemented as methods in the class.
-            </li>
-          </ul>
-        </aside>
-      </section>
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="7">
+                        Behaviour <span class="fragment custom blur highlight-red"
+                                        data-fragment-index="8"> => Methods </span>
+                    </li>
+                </ul>
+                <aside class="notes" contenteditable>
+                    <h2>Domain modelling is closely tied to the concepts of types and objects that we are familiar with
+                        in object-oriented programming</h2>
+                    <ul>
+                        <li>(Concepts) often translate directly into types in our code. For example, the “Book” concept
+                            might become a Book
+                            class.
+                        </li>
+                        <li>(Instances) of these types represent specific objects. Each Book object would represent a
+                            particular book in the library.
+                        </li>
+                        <li>(Attributes) in the domain model become properties (fields) of the class.</li>
+                        <li>(Behaviour) defined in the domain model is implemented as methods in the class.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
 
-    </section>
-    <section>
-      <h3>Relating to an Algebra</h3>
-      <section>
-        <h4 class="custom blur highlight-blue-initially">Algebraic Structures</h4>
-        <ul>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="1">Types => Sets</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Relationships => Functions</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Operations</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="4">Laws & Properties</li>
-        </ul>
+        </section>
+        <section data-auto-animate>
+            <h3>Relating to an Algebra</h3>
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially">Algebraic Structures</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Types<span
+                            class="fragment custom blur highlight-red"
+                            data-fragment-index="2"> => Sets</span>
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">Relationships<span
+                            class="fragment custom blur highlight-red"
+                            data-fragment-index="4"> => Functions</span>
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="5">Operations
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="6">Laws &
+                        Properties
+                    </li>
+                </ul>
 
-        <aside class="notes" contenteditable>
-          <h2>Algebraic Structures:</h2>
-          <p> The relationship between a domain model and an algebra might seem abstract at first, but it’s a powerful concept with practical implications in
-            software design, especially when dealing with complex systems.</p>
-          <ul>
-            <li>(Types as Sets) In the domain model, each concept (e.g., “Customer,” “Product,” “Order”) we can think of as a set of possible values. For
-              instance, “Customer” represents the set of all possible customers.
-            </li>
-            <li>(Relationships as Functions) Relationships between concepts can be modelled as functions. For example, an “Order” might have a function
-              getCustomer() that maps an order to its corresponding customer.
-            </li>
-            <li>(Operations) An algebra defines operations on these sets. In an e-commerce example, we might have operations like “add product to order,”
-              “calculate total price,” or “apply discount.”
-            </li>
-            <li>(L&P) These operations adhere to certain laws and properties. These laws reflect the business rules and constraints of your domain.
-            </li>
-          </ul>
-        </aside>
-      </section>
-    </section>
-    <section><h3>Relating to an Algebra</h3>
-      <section>
-        <h4 class="custom blur highlight-blue-initially">Connecting the Pieces</h4>
-        <ul>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="1">Domain model informs the Algebra</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Algebra provides Structure</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Implementation</li>
-        </ul>
+                <aside class="notes" contenteditable>
+                    <h2>Algebraic Structures:</h2>
+                    <p> The relationship between a domain model and an algebra can seem abstract at first.
+                        It is though a powerful analogy with practical implications in software design, especially when
+                        dealing with more complex systems.</p>
+                    <ul>
+                        <li>(Types as Sets) In the domain model, we can think of each concept as a set of possible
+                            values.
+                            For instance, “Customer” represents the set of all possible customers.
+                        </li>
+                        <li>(Relationships as Functions) Relationships between concepts can be modelled as functions.
+                            An “Order” might have a function getCustomer() that maps an order to its corresponding
+                            customer.
+                        </li>
+                        <li>(Operations) An algebra defines operations on these sets. In an e-commerce example, we might
+                            have operations like “add product to order,”
+                            “calculate total price,” or “apply discount.”
+                        </li>
+                        <li>(L&P)Operations adhere to certain laws and properties. These laws reflect the business rules
+                            and constraints of the domain.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+        </section>
+        <section data-auto-animate><h3>Relating to an Algebra</h3>
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially">Connecting the Pieces</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Domain model
+                        informs the Algebra
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">Algebra
+                        provides Structure
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">
+                        Implementation
+                    </li>
+                </ul>
 
-        <aside class="notes" contenteditable>
-          <h2>Putting it all together</h2>
-          <ul>
-            <li>The domain model provides the basis for defining the sets and operations in the algebra. It ensures that the algebra accurately reflects our
-              real-world problem.
-            </li>
-            <li>The algebraic structure helps us reason about the behaviour of your system and ensures consistency. For example, the “add product to order”
-              operation might need to be associative (the order in which you add products shouldn’t matter).
-            </li>
-            <li>In code, we implement the algebra using classes, methods, and data structures. The algebraic laws guide the implementation and help you avoid
-              inconsistencies.
-            </li>
-          </ul>
-        </aside>
-      </section>
-    </section>
-    <section><h3>Relating to an Algebra</h3>
-      <section>
-        <h4 class="fcustom blur highlight-blue-initially">Benefits of this Approach</h4>
-        <ul>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="1">Rigour and Precision</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Testability</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Maintainability</li>
-        </ul>
-        <aside class="notes" contenteditable>
-          <h2>What does this give us?</h2>
-          <ul>
-            <li>(R&P) Using an algebraic approach brings rigour and precision to the domain model. It helps us clearly define the behaviour of a system.</li>
-            <li>(Testability)Algebraic laws can be used to create comprehensive test cases, ensuring that your implementation adheres to the domain rules.</li>
-            <li>(Maintainability)A well-defined algebra makes code more modular and easier to maintain. Changes in the domain can be reflected by modifying the
-              algebra and its implementation.
-            </li>
-          </ul>
-        </aside>
-      </section>
-    </section>
-    <section><h3>Banking Example</h3>
-      <section>
-          <h4 class="highlight-blue-initially" data-fragment-index="0">Domain Concepts</h4>
-          <p class=" fragment custom blur highlight-green" data-fragment-index="1"><em><b>Account, Transaction,
-            Balance</b></em></p>
-        <div class="fragment custom blur" data-fragment-index="2">
-          <h4 class="highlight-blue-initially">Operations</h4>
-          <p class=" fragment custom blur highlight-green" data-fragment-index="3"><em><b>deposit, withdraw,
-            transfer</b></em></p>
-        </div>
-        <aside class="notes" contenteditable>
-          <h2>Consider a banking system. </h2>
-          <ul>
-            <li>Your domain model might include concepts like <em><b>Account</b></em> and <em><b>Transaction</b></em></li>
-            <li>We could define an algebra with operations like <em><b>deposit, withdraw, transfer</b></em> </li>
-          </ul>
-        </aside>
-      </section>
-      <section>
-        <h4 class="highlight-blue-initially">Algebraic laws: <em><b>Consistency</b></em></h4>
-        <p class="fragment custom blur highlight-green" data-fragment-index="1">
-          withdraw operation requires sufficient funds </p>
-        <aside class="notes">
-          These operations would need to satisfy certain laws
-        </aside>
-      </section>
-      <section>
-          <h4 class="highlight-blue-initially">Algebraic laws: <em><b>Associativity</b></em></h4>
-        <p class="fragment custom blur highlight-green" data-fragment-index="1">
-          Multiple deposits and withdrawals result in same final balance regardless of order</p>
-      </section>
-      <aside class="notes" contenteditable>
-        <p>By implementing these algebraic laws in our code, we ensure that the banking system behaves correctly and consistently.</p>
-      </aside>
-    </section>
-    <section>
-      <h3>Algebraic Data Types</h3>
-      <section>
-        <h4 class="highlight-blue-initially" data-fragment-index="0">Features</h4>
-        <ul>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="1">Composite</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Readability</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Constraint Enforcement</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="4">Reduce Boilerplate</li>
-        </ul>
-        <aside class="notes" contenteditable>
-          <h2>Algebraic Data Types (ADTs) are a way to structure data in functional programming languages.</h2>
-          <ul>
-            <li>
-              They provide a mechanism to create composite data types by combining other simpler types. Model complex data structures using simpler building blocks, much like building with LEGO.
-            </li>
-            <li>(Readability) make code more readable by explicitly defining the structure and possible values of complex data. This makes it easier to
-              understand and reason about the code, improving maintainability.
-            </li>
-            <li>(C E) The compiler can detect errors at compile time, preventing runtime issues that might arise from invalid data structures or operations.
-            </li>
-            <li>(R B) Compared to using classes or structs alone, ADTs can often reduce the amount of boilerplate code needed to define and manipulate complex
-              data. For example, pattern matching with ADTs often eliminates the need for lengthy if-else chains or switch statements.
-              ADTs accurately model data that has a limited set of possible states or variations.
-            </li>
-          </ul>
-          <p>In essence, ADTs help us model the application domain by defining custom data types that are tailor-made for a specific application and enforced by
-            the type system. They provide a powerful tool for tackling complexity in software engineering.</p>
-        </aside>
-      </section>
-      <section>
-        <h4 class="highlight-blue-initially" data-fragment-index="0">Why Algebraic?</h4>
-        <ul>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="1">Objects</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Operations</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Laws</li>
-        </ul>
-        <aside class="notes" contenteditable>
-          <h2>Why Algebraic?</h2>
-          <ul>
-            <li>Objects: The types that make up the algebra.</li>
-            <li>Operations: The ways to combine types to create new types.</li>
-            <li>Laws: The relationships between the types and the operations.</li>
-          </ul>
-        </aside>
-      </section>
-      <section>
-        <div class="highlight-blue-initially fragment" data-fragment-index="1">
-          The algebra consists of two primary operators
-        </div>
-        <ul class="fragment" data-fragment-index="2">
-          <li>Product (represented by <em><b>"×"</b></em> or <em><b>"AND"</b></em>)</li>
-          <li>Sum (represented by <em><b>"+"</b></em> or <em><b>"OR"</b></em>)</li>
-        </ul>
-      </section>
-    </section>
-    <section>
-      <h4>Product Type</h4>
-      <section>
-        <ul>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="1"> Think of it as an <em><b>AND</b></em>
-            relationship.</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Point is a product
-            type consisting of an x AND y coordinate.</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="4">tuples, POJOs, structs, or records</li>
-        </ul>
+                <aside class="notes" contenteditable>
+                    <h2>Putting it all together</h2>
+                    <ul>
+                        <li>The domain model defines sets and operations in the algebra. It ensures that the algebra
+                            accurately reflects the
+                            real-world problem.
+                        </li>
+                        <li>The algebraic structure helps us reason about the behaviour of the system and ensures
+                            consistency.
+                            An operation like<em><b>adding a product to an order</b></em> probably needs to be
+                            associative (the order of items on your bill shouldn’t matter).
+                        </li>
+                        <li>In code, we implement the algebra using classes, methods, and data structures. The algebraic
+                            laws provide the rules to avoid
+                            inconsistencies.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+        </section>
+        <section data-auto-animate><h3>Relating to an Algebra</h3>
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially">Benefits of this Approach</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Rigour and
+                        Precision
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">Testability
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">
+                        Maintainability
+                    </li>
+                </ul>
+                <aside class="notes" contenteditable>
+                    <h2>What does this give us?</h2>
+                    <ul>
+                        <li>(R&P) Using an algebraic approach brings rigour and precision to the domain model. It helps
+                            us clearly define the behaviour of a system.
+                        </li>
+                        <li>(Testability)Algebraic laws can be used to create comprehensive test cases, ensuring that
+                            the implementation adheres to the domain rules.
+                        </li>
+                        <li>(Maintainability)A well-defined algebra makes code more modular and easier to maintain.
+                            Changes in the domain can be reflected by modifying the
+                            algebra and its implementation.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+        </section>
+        <section data-auto-animate><h3>Banking Example</h3>
+            <section data-auto-animate>
+                <h4 class="fragment highlight-blue-initially" data-fragment-index="0">Domain Concepts</h4>
+                <p class=" fragment custom blur highlight-green" data-fragment-index="0"><em><b>Account, Transaction,
+                    Balance</b></em></p>
+                <div class="fragment custom blur" data-fragment-index="2">
+                    <h4 class="highlight-blue-initially">Operations</h4>
+                    <p class=" fragment custom blur highlight-green" data-fragment-index="2"><em><b>deposit, withdraw,
+                        transfer</b></em></p>
+                </div>
+                <aside class="notes" contenteditable>
+                    <h2>Consider a banking system. </h2>
+                    <ul>
+                        <li>Your domain model might include concepts like <em><b>Account</b></em>,
+                            <em><b>Transaction</b></em> and <em><b>Balance</b></em></li>
+                        <li>We could define an algebra with operations like <em><b>deposit, withdraw, transfer</b></em>
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+            <section data-auto-animate>
+                <h4 class="highlight-blue-initially">Algebraic laws</h4>
+                <h5><em>Consistency</em></h5>
+                <p class="fragment custom blur highlight-green" data-fragment-index="1">
+                    withdraw operation requires sufficient funds</p>
+                <aside class="notes">
+                    These operations would need to satisfy certain laws
+                </aside>
+            </section>
+            <section data-auto-animate>
+                <h4 class="highlight-blue-initially">Algebraic laws</h4>
+                <h5><em>Associativity</em></h5>
+                <p class="fragment custom blur highlight-green" data-fragment-index="1">
+                    Multiple deposits and withdrawals result in same final balance regardless of order</p>
+            </section>
+            <aside class="notes" contenteditable>
+                <p>By implementing these algebraic laws in our code, we ensure that the banking system behaves correctly
+                    and consistently.</p>
+            </aside>
+        </section>
+        <section data-auto-animate>
+            <h3>Algebraic Data Types</h3>
+            <section data-auto-animate data-background="assets/lego_transparent.png" data-background-opacity="0.1">
+                <h4 class="highlight-blue-initially" data-fragment-index="0">Features</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Composite
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">Readability
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">Constraint
+                        Enforcement
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="4">Reduce
+                        Boilerplate
+                    </li>
+                </ul>
+                <aside class="notes" contenteditable>
+                    <h3>Let's discuss the salient features</h3>
+                    <ul>
+                        <li>
+                            (Composite)> Create composite data types by combining other simpler types. Model complex
+                            data structures using simpler building blocks, much like LEGO.
+                        </li>
+                        <li>(Readability)> code is more readable by explicitly defining the structure and all possible
+                            values. <em>This makes it easier to
+                                understand and reason about the code which in turn helps improve maintainability.</em>
+                        </li>
+                        <li>(C E)> The compiler acts as the policeman, it detects errors at compile time, preventing
+                            runtime issues that might arise from invalid data structures or operations.
+                        </li>
+                        <li>(R B)> Compared to using classes or structs alone, they reduce the amount of boilerplate.
+                            Combined with pattern matching often eliminates the need for lengthy if-else chains or
+                            switch statements.
+                        </li>
+                    </ul>
+                    <p>In essence, ADTs help us accurately model data that with a limited set of possible states or
+                        variations
+                        by defining custom data types that are enforced by the type system.</p>
+                    <p> This is a powerful tool for tackling complexity in software engineering.</p>
+                </aside>
+            </section>
+            <section data-auto-animate data-background="assets/lego_transparent.png" data-background-opacity="0.1">
+                <h4 class="highlight-blue-initially" data-fragment-index="0">Why Algebraic?</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Objects</li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">Operations
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">Laws</li>
+                </ul>
+                <aside class="notes" contenteditable>
+                    <h2>So why Algebraic?</h2>
+                    <ul>
+                        <li>Objects: The types that make up the algebra.</li>
+                        <li>Operations: The ways to combine types to create new types.</li>
+                        <li>Laws: The relationships or rules between the types and the operations.</li>
+                    </ul>
+                </aside>
+            </section>
+            <section data-auto-animate data-background="assets/lego_transparent.png" data-background-opacity="0.1">
+                <div class="highlight-blue-initially" data-fragment-index="0">
+                    The algebra consists of two primary operators
+                </div>
+                <ul class="fragment" data-fragment-index="1">
+                    <li>Product (represented by <em><b>"×"</b></em> or <em><b>"AND"</b></em>)</li>
+                    <li>Sum (represented by <em><b>"+"</b></em> or <em><b>"OR"</b></em>)</li>
+                </ul>
+                <aside class="notes" contenteditable>
+                    <h3>The Algebra of Data Types has two operators</h3>
+                </aside>
+            </section>
+        </section>
+        <section data-auto-animate data-background="assets/lego_transparent.png" data-background-opacity="0.1">
+            <h4>Product Type</h4>
+            <h2 class="custom blur highlight-blue-initially"><b>x</b></h2>
+            <section data-auto-animate>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1"> Think of it
+                        as an <em><b>AND</b></em>
+                        relationship.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">A Point type
+                        is a product of Coordinate types
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">tuples,
+                        POJOs, structs, or records
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="4">Cartesian
+                        product
+                    </li>
+                </ul>
 
-        <aside class="notes" contenteditable>
-          <h2>Product Type</h2>
-          <ul>
-            <li>Logical AND operator.</li>
-            <li>Product types bundle two or more arbitrary types together such that T = A AND B AND C.</li>
-            <li>In code, we see this as tuples, POJOs, structs, or records. In set theory, this is the Cartesian product..</li>
-          </ul>
-        </aside>
-      </section>
+                <aside class="notes" contenteditable>
+                    <h2>Product Type</h2>
+                    <ul>
+                        <li>Logical AND operator.</li>
+                        <li>Product types bundle two or more arbitrary types together. A Point is a product type
+                            consisting of an x AND y coordinate.
+                        </li>
+                        <li>In code it looks like tuples, POJOs, structs, or records.</li>
+                        <li>In set theory this is the Cartesian product.</li>
+                    </ul>
+                </aside>
+            </section>
 
-      <section>
-         <pre><code class="java" data-trim data-noescape data-line-numbers>
-  public record TextStyle(Weight weight, Font font){}
+            <section data-auto-animate>
+         <pre><code class="java" data-trim data-noescape>
+  public record TextStyle(Font font, Weight weight){}
   public enum Font { SERIF, SANS_SERIF, MONOSPACE }
   public enum Weight { NORMAL, LIGHT, HEAVY }
          </code></pre>
-        <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
-          <pre><code>TextStyle = Weight ⨯ Font</code></pre>
-        </div>
-        <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
-          <pre><code>9 = 3 x 3</code></pre>
-        </div>
-        <aside class="notes" contenteditable>
-          <h2>Product Type</h2>
-          This is called a product type because the set of all possible values is the Cartesian product of the possible values of its components.
-        </aside>
-      </section>
-    </section>
-    <section>
-      <h4>Sum Type</h4>
-      <section>
-        <ul>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="1"> Think of it as an <em><b>OR</b></em>
-            relationship.</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="2"> A Shape could be a Circle OR a Square OR a Triangle.</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Defines variants.</li>
-        </ul>
+                <div class="fragment custom blur highlight-current-green check" data-fragment-index="1">
+                    <pre><code>TextStyle = Font ⨯ Weight</code></pre>
+                </div>
+                <div class="fragment custom blur highlight-current-green check" data-fragment-index="1">
+                    <pre><code>9 = 3 x 3</code></pre>
+                </div>
+                <aside class="notes" contenteditable>
+                    <h3>Here is an example of a product type</h3>
+                    <ul>
+                        <li>TextStyle is a product of Font and Weight</li>
+                        <li>The Set of all possible values is the Cartesian product of the possible values of its
+                            components
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+        </section>
+        <section data-auto-animate data-background="assets/lego_transparent.png" data-background-opacity="0.1">
+            <h4>Sum Type</h4>
+            <h2 class="custom blur highlight-blue-initially"><b>+</b></h2>
+            <section data-auto-animate>
 
-        <aside class="notes">
-          <p>Sum types represent a choice between different types, where a value can be one of several possible types, but only one at a time.</p>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1"> Think of it
+                        as an <em><b>OR</b></em>
+                        relationship.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">A Shape could
+                        be a Circle OR a Square OR a Triangle.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">Defines
+                        variants.
+                    </li>
+                </ul>
 
-          <ul>
-            <li>Logical OR operator.</li>
-            <li>Sum types are built with the ‘+’ operator and combine types with OR, as in T = A OR B OR C.</li>
-            <li>A Shape might be a sum type, as it could be a Circle OR a Square OR a Triangle.</li>
-          </ul>
-          <p>The sum is the union of the value sets of the alternatives.</p>
-          <p>
-            Traditionally, sum types are more common in functional languages like Haskell (as data types) or Scala (as sealed traits of case classes).
-          </p>
-        </aside>
-      </section>
-      <section>
-        <div>
-          <pre><code> Type A = Integer | Boolean </code></pre>
-          <pre><code> Type B = String | Float </code></pre>
-        </div>
-        <div class="fragment custom blur highlight-current-green" data-fragment-index="1">
-          <pre><code> Type C = A + B </code></pre>
-        </div>
-        <div class="fragment custom blur highlight-current-green" data-fragment-index="2">
-          <pre><code> 4 = 2 + 2</code></pre>
-        </div>
+                <aside class="notes">
+                    <h3>Sum types represent a choice between different types, where a value can be one of several
+                        possible types, but only one at a time.</h3>
 
-        <aside class="notes">
-          <ul>
-            <li>Holds any of the four possible values: Integer, Boolean, String, or Float.</li>
-            <li>Its commutative A + B = B + A</li>
-            <li>This is a Sum because the number of items in the resulting type is the sum of the number of items in each subtype.</li>
-          </ul>
-        </aside>
-      </section>
-    </section>
-    <section>
-      <h4>Combining Product and Sum Types</h4>
-      <section>
+                    <ul>
+                        <li>Logical OR operator.</li>
+                        <li>A Shape might be a sum type, as it could be a Circle OR a Square OR a Triangle.</li>
+                        <li>Sum types are built with the ‘+’ operator and combine types with OR, as in T = A OR B OR
+                            C.
+                        </li>
+                    </ul>
+                    <p>The sum is the union of the value sets of the alternatives.</p>
+                    <p>
+                        Traditionally, sum types are more common in functional languages like Haskell (as data types) or
+                        Scala (as sealed traits of case classes).
+                    </p>
+                </aside>
+            </section>
+            <section data-auto-animate>
+                <div>
+                    <pre><code> Type A = Integer | Boolean </code></pre>
+                    <pre><code> Type B = String | Float </code></pre>
+                </div>
+                <div class="fragment custom blur highlight-current-green check" data-fragment-index="1">
+                    <pre><code> Type C = A + B </code></pre>
+                </div>
+                <div class="fragment custom blur highlight-current-green check" data-fragment-index="2">
+                    <pre><code> 4 = 2 + 2</code></pre>
+                </div>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Type A Holds any of the two possible values: Integer or Boolean</li>
+                        <li>Type B Holds any of the two possible values: String or Float.</li>
+                        <li>Type C Holds any of the four possible values: Integer, Boolean, String, or Float.</li>
+                        <li>Its commutative A + B = B + A</li>
+                        <li>This is a Sum because the number of items in the resulting type is the sum of the number of
+                            items in each subtype.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+        </section>
+        <section data-auto-animate data-background="assets/lego_transparent.png" data-background-opacity="0.1">
+            <h4>Combining Product and Sum Types</h4>
+            <section data-auto-animate>
         <pre><code class="haskell" data-trim data-noescape>
 DnsRecord(AValue(ttl, name, ipv4)
           | AaaaValue(ttl, name, ipv6)
           | CnameValue(ttl, name, alias)
           | TxtValue(ttl, name, value))
         </code></pre>
-        <aside class="notes">
-          <p>For example, we could define a DNS Record as a sum type:</p>
-        </aside>
-      </section>
-      <section>
+                <aside class="notes">
+                    <p>We can define a DNS Record as a sum type:</p>
+                </aside>
+            </section>
+            <section data-auto-animate>
       <pre><code class="haskell" data-trim data-noescape>
 DnsRecord(ttl, name, AValue(ipv4)
           | AaaaValue(ipv6)
           | CnameValue(alias)
           | TxtValue(value))
       </code></pre>
-        <aside class="notes">
-          <p> But we could also refactor it to a product of a product and sums:</p>
-        </aside>
-      </section>
-      <section>
-        <h4>Distributive</h4>
-        <p>
-          \( \color{orange} (a \cdot b + a \cdot c) \Leftrightarrow a \cdot (b + c) \)
-        </p>
-        <aside class="notes">
-          <p>Product and sum types can be combined, and they follow the distributive law of numerical algebra</p>
-        </aside>
-      </section>
-      <section>
-        <h5>Commutative</h5>
-        <p>
-          \( \color{blue} (a \cdot b) \Leftrightarrow (b \cdot a) \)
-          <br>
-          \( \color{red} (a + b) \Leftrightarrow (b + a) \)
-        </p>
-        <aside class="notes">
-          <p>At the type level we can change ordering in using the same commutative law we would in algebra</p>
-        </aside>
-      </section>
-      <section>
-        <h5>Associative</h5>
-        <p>
-          \( \color{green} (a + b) + c \Leftrightarrow a + (b + c) \)
-          <br>
-          \( \color{purple} (a \cdot b) \cdot c \Leftrightarrow a \cdot (b \cdot c) \)
-        </p>
-      </section>
-      <!--            <aside class="notes">Shh, these are my private speaker notes here</aside>-->
-
-    </section>
-    <section>
-      <h3>A Historical Perspective</h3>
-      <section>
-        <h4>Early Days</h4>
-        <ul>
-          <li class="fragment custom blur highlight-current-green">Concept of ADTs originated in the 1970s with functional languages like ML and Hope.</li>
-          <li class="fragment custom blur highlight-current-green">Popularized by languages like Haskell, where ADTs are a fundamental building block.</li>
-        </ul>
-        <aside class="notes">
-          Let's start with a bit of history. The idea of Algebraic Data Types isn't new. They trace back to the early days of
-          functional programming, with languages like ML and Hope in the 1970s. These languages laid the groundwork for ADTs.
-          However, it was Haskell that really brought ADTs into the limelight, making them a core part of its type system and
-          showing how powerful they can be for building robust and expressive programs.
-        </aside>
-      </section>
-
-      <section>
-        <h4>ADTs Across Languages</h4>
-      </section>
-      <aside class="notes">
-        <p>Let's take a quick tour of how ADTs (or their approximations) have been handled in different languages:</p>
-      </aside>
-      <section>
-        <h4>C</h4>
-        <ul>
-          <li class="fragment custom blur highlight-current-green">No built-in ADT support.</li>
-          <li class="fragment custom blur highlight-current-green">Product types simulated with <em><b>structs</b></em>.</li>
-          <li class="fragment custom blur highlight-current-green">Sum types crudely approximated with <em><b>unions</b></em> and an <em><b>enum</b></em> tag for type tracking.</li>
-          <li class="fragment custom blur highlight-current-green">Unions are notoriously unsafe (no compile-time type checking).</li>
-        </ul>
-        <aside class="notes">
-          C, being a more traditional imperative language, doesn't have direct support for ADTs. You can mimic product types
-          using structs, which is relatively straightforward. For sum types, it gets trickier.
-        </aside>
+                <aside class="notes">
+                    <p> But we could also refactor it to a product of sum:</p>
+                </aside>
+            </section>
+            <section data-auto-animate>
+                <h4>Distributive</h4>
+                <p>
+                    \( \color{orange} (a \cdot b + a \cdot c) \Leftrightarrow a \cdot (b + c) \)
+                </p>
+                <aside class="notes">
+                    <p>when product and sum types are combined, they follow the distributive law of numerical
+                        algebra</p>
+                </aside>
+            </section>
+            <section data-auto-animate>
+                <h5>Commutative</h5>
+                <p>
+                    \( \color{blue} (a \cdot b) \Leftrightarrow (b \cdot a) \)
+                    <br>
+                    \( \color{red} (a + b) \Leftrightarrow (b + a) \)
+                </p>
+                <aside class="notes">
+                    <p>At the type level we can change ordering using the same commutative law we would in numerical
+                        algebra</p>
+                </aside>
+            </section>
+            <section data-auto-animate>
+                <h5>Associative</h5>
+                <p>
+                    \( \color{green} (a + b) + c \Leftrightarrow a + (b + c) \)
+                    <br>
+                    \( \color{purple} (a \cdot b) \cdot c \Leftrightarrow a \cdot (b \cdot c) \)
+                </p>
+                <aside class="notes">Similarly we have the associative law</aside>
+            </section>
         </section>
-      <section>
-        <h4>C</h4>
-        <pre><code class="c fragment" data-trim data-noescape>
+        <section data-auto-animate>
+            <h3>A Historical Perspective</h3>
+            <section data-auto-animate>
+                <h4>Early Days</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check">Originated in the 1970s with
+                        functional languages like ML and Hope.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check">Popularized by Haskell, where ADTs
+                        are a fundamental building block.
+                    </li>
+                </ul>
+                <aside class="notes">
+                    Let's start with a bit of history. The idea of Algebraic Data Types isn't new.
+                    <ul>
+                        <li>They trace back to the early days of functional programming, with languages like ML and Hope
+                            in the 1970s.
+                            I first came across them in SML in the mid 90s when i was at Edinburgh University
+                        </li>
+
+                        <li>However, it was Haskell that really brought them into the limelight, making them a core part
+                            of its type system and
+                            showing how powerful they can be for building robust and expressive programs.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h4>ADTs Across Languages</h4>
+                <aside class="notes">
+                    <p>Let's take a quick tour of how ADTs (or their approximations) have been handled in different
+                        languages:</p>
+                </aside>
+            </section>
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially" data-fragment-index="0">C language</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check">No built-in ADT support.</li>
+                    <li class="fragment custom blur highlight-current-green check">Product types simulated with <em><b>structs</b></em>.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check">Sum types crudely approximated with
+                        <em><b>unions</b></em> and an <em><b>enum</b></em> tag for type tracking.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check">Unions are notoriously unsafe (no
+                        compile-time type checking).
+                    </li>
+                </ul>
+                <aside class="notes">
+                    <ul>
+                        <li>
+                            C, being a more traditional imperative language, doesn't have direct support for ADTs.
+                        </li>
+                        <li>
+                            You can mimic product types using structs, which is relatively straightforward.
+                        </li>
+                        <li>
+                            For sum types, it gets trickier.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially" data-fragment-index="0">C language</h4>
+                <pre><code class="c" data-trim data-noescape>
         union vals {
           char ch;
           int nt;
@@ -467,76 +636,109 @@ DnsRecord(ttl, name, AValue(ipv4)
           union vals val;
         };
       </code></pre>
-        <aside class="notes">
-          <ul>
-            <li>The typical approach is to use
-              a tagged union, where you have a union to hold different types and an enum tag to keep track of which type is
-              currently stored.
+                <aside class="notes">
+                    <ul>
+                        <li>The typical approach is to use
+                            a tagged union, where you have a union to hold different types and an enum tag to keep track
+                            of which type is
+                            currently stored.
+                        </li>
+                        <li>
+                            However, this method is error-prone. <p>Unions in C don't enforce type safety at compile
+                            time, so you could
+                            accidentally interpret the data as the wrong type, leading to bugs or crashes. It's up to
+                            the programmer to
+                            manage the tag correctly and ensure type safety manually.</p></li>
+                    </ul>
+                </aside>
+            </section>
 
-              However, this method is error-prone. Unions in C don't enforce type safety at compile time, so you could
-              accidentally interpret the data as the wrong type, leading to bugs or crashes. It's up to the programmer to
-              manage the tag correctly and ensure type safety manually.</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section>
-        <h4>Haskell</h4>
-        <ul>
-          <li class="fragment custom blur highlight-current-green">Elegant ADT support using the <em><b>data</b></em> keyword.</li>
-          <li class="fragment custom blur highlight-current-green">Type system designed for ADT creation and manipulation.</li>
-        </ul>
-        <pre><code class="haskell fragment" data-trim data-noescape>
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially" data-fragment-index="0">Haskell</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check">Elegant ADT support using the <em><b>data</b></em>
+                        keyword.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check">Type system designed for ADT creation
+                        and manipulation.
+                    </li>
+                </ul>
+                <pre><code class="haskell fragment" data-trim data-noescape>
         data Shape = Circle Float | Rectangle Float Float
       </code></pre>
-        <aside class="notes">
-          <p>Haskell, being a purely functional language, has a beautiful and concise way of defining ADTs using the <em><b>data</b></em>
-          keyword.</p><p> Here, we can define a <em><b>Shape</b></em> type that can either be a `<em><b>Circle</b></em> with a radius or a <em><b>Rectangle</b></em> with a
-          width and height.</p>
+                <aside class="notes">
+                    <p>Haskell, being a purely functional language, has a beautiful and concise way of defining ADTs
+                        using the <em><b>data</b></em>
+                        keyword.</p>
+                    <p> Here, we see a <em><b>Shape</b></em> type that can either be a <em><b>Circle</b></em> with a
+                        radius or a <em><b>Rectangle</b></em> with a
+                        width and height.</p>
 
-          <p>This is a perfect example of a sum type. Haskell's type system is built around ADTs, making them very natural to
-          use and providing strong compile-time guarantees about type safety.</p>
-        </aside>
-      </section>
+                    <p>Haskell's type system is built around ADTs, making them very natural to use and providing strong
+                        compile-time guarantees about type safety.</p>
+                </aside>
+            </section>
 
-      <section>
-        <h4>Scala</h4>
-        <ul>
-          <li class="fragment custom blur highlight-current-green"><em><b>case classes</b></em> for product types.</li>
-          <li class="fragment custom blur highlight-current-green"><em><b>sealed traits</b></em> with <em><b>case classes/objects</b></em> for sum types.</li>
-          <li class="fragment custom blur highlight-current-green">Robust and type-safe ADT definition.</li>
-        </ul>
-        <pre><code class="scala fragment" data-trim data-noescape>
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially" data-fragment-index="0">Scala</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check"><em><b>case classes</b></em> for
+                        product types.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check"><em><b>sealed traits</b></em> with
+                        <em><b>case classes/objects</b></em> for sum types.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green">Robust and type-safe ADT definition.</li>
+                </ul>
+                <pre><code class="scala fragment" data-trim data-noescape>
   sealed trait Shape
   case class Circle(radius: Double) extends Shape
   case class Rectangle(width: Double, height: Double) extends Shape
 </code></pre>
-        <aside class="notes">
-          <p>Scala, a language that blends object-oriented and functional programming, also provides strong support for ADTs. </p>
-          <p>It
-          uses case classes to define product types concisely. For sum types, you use a combination of sealed traits and
-          case classes or case objects.</p>
+                <aside class="notes">
+                    <p>Scala, is a language that blends object-oriented and functional programming. It also provides
+                        strong support for ADTs. </p>
+                    <ul>
+                        <li>It uses case classes to define product types concisely.</li>
+                        <li>For sum types, you use a combination of sealed traits and case classes or case objects.</li>
+                        <li>Scala has powerful typesafe pattern matching</li>
+                        <li>The sealed keyword here is important. It means that all possible subtypes of Shape must be
+                            defined in the same
+                            file. This allows the compiler to perform exhaustiveness checks when pattern matching,
+                            ensuring that you've covered
+                            all possible cases.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
 
-          <p>The sealed keyword here is important. It means that all possible subtypes of Shape must be defined in the same
-          file. This allows the compiler to perform exhaustiveness checks when pattern matching, ensuring that you've covered
-          all possible cases.</p>
-        </aside>
-      </section>
-
-        <section>
-          <h4>TypeScript</h4>
-          <ul>
-            <li class="fragment custom blur highlight-current-green" data-fragment-index="1">Product types can be represented using interfaces or classes.</li>
-            <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Sum types are created by combining types with the union operator (<em><b>|</b></em>) and adding a discriminant property.</li>
-            <li class="fragment custom blur highlight-current-green" data-fragment-index="3">The discriminant property allows for type-safe pattern matching.</li>
-          </ul>
-          <aside class="notes">
-            <p>TypeScript provides pretty good support for ADTs, primarily through a feature called discriminated unions, also known as tagged unions.</p>
-          </aside>
-          </section>
-          <section>
-            <h4>TypeScript</h4>
-          <pre><code class="typescript" data-trim data-noescape data-fragment-index="1">
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially" data-fragment-index="0">TypeScript</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Product types
+                        can be represented using interfaces or classes.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">Sum types are
+                        created by combining types with the union operator and adding a discriminant property.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">Type-safe
+                        pattern matching.
+                    </li>
+                </ul>
+                <aside class="notes">
+                    <p>TypeScript provides pretty good support for ADTs</p>
+                    <ul>
+                        <li>Product types can be represented using interfaces or classes.</li>
+                        <li>Sum types are created by combining types with the union operator (<em><b>|</b></em>) and
+                            adding a discriminant property.
+                        </li>
+                        <li>The discriminant property allows for type-safe pattern matching.</li>
+                    </ul>
+                </aside>
+            </section>
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially" data-fragment-index="0">TypeScript</h4>
+                <pre><code class="typescript" data-trim data-noescape data-fragment-index="1">
 interface Circle {
   kind: "circle"; // Discriminant
   radius: number;
@@ -561,74 +763,99 @@ function area(shape: Shape): number {
 }
     </code></pre>
 
-          <aside class="notes">
-            <p>Here's an example. We define a `Shape` type that can be either a `Circle` or a `Rectangle`.
-            Notice the `kind` property in each interface. This is the discriminant. It's a common string literal type
-            that tells us which variant of the `Shape` we're dealing with.</p>
-            <p>
-            Then, in the `area` function, we use a `switch` statement on `shape.kind`. TypeScript is smart enough to understand
-            that inside each `case`, the `shape` variable must be of the corresponding type. For example, in the `"circle"`
-            case, it knows that `shape` is a `Circle`, so we can safely access `shape.radius`. This provides compile-time
-            type safety.</p>
-            <p>
-            Product types are more straightforward; you can use interfaces or classes to define them, much like in other
-            object-oriented languages.</p>
-          </aside>
+                <aside class="notes">
+                    <ul>
+                        <li><p>We define a <em>Shape</em> type that can be either a <em>Circle</em> or a
+                            <em>Rectangle</em>.</p>
+
+                            <p>Notice the <em>kind</em> property in each interface. This is the discriminant. It's a
+                                common string literal type
+                                that tells us which variant of the <em>Shape</em> we're dealing with.</p></li>
+                        <li>Then, in the <em>area</em> function, we use a <em>switch</em> statement on
+                            <em>shape.kind</em>.</p>
+                            <p>TypeScript is smart enough to understand
+                                that inside each <em>case</em>, the <em>shape</em> variable must be of the corresponding
+                                type.
+                            <p>
+                            <p>For example, in the <b>circle</b>
+                                case, it knows that <em>shape</em> is a <em>Circle</em>, so we can safely access <em>shape.radius</em>.
+                                This provides compile-time
+                                type safety.</p>
+                            <p>
+                                Product types are more straightforward; you can use interfaces or classes to define
+                                them, much like in other
+                                object-oriented languages.</p></li>
+                    </ul>
+
+                    <p>
+
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially" data-fragment-index="0">Legacy Java (Pre-Java 17)</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check">Simulated Sum types</li>
+                    <li class="fragment custom blur highlight-current-green check">Product types represented by classes
+                        with member variables.
+                    </li>
+                </ul>
+                <aside class="notes">
+                    <h4>Historically, Java didn't have direct support for ADTs. </h4>
+                    <ul>
+                        <li><p>To mimic sum types, you'd typically use class hierarchies
+                            and rely on the Visitor pattern. This is quite verbose and can be difficult to get
+                            right.</p>
+                            <p>It also doesn't provide the same level of compile-time safety as true ADTs. </p></li>
+                        <li>
+                            <p>Product types were easier, typically represented by regular classes with member
+                                variables.</p>
+                        </li>
+                    </ul>
+
+                </aside>
+            </section>
         </section>
+        <section data-auto-animate><h3>Algebraic Data Types</h3>
 
-      <section>
-        <h4>Legacy Java (Pre-Java 17)</h4>
-        <ul>
-          <li class="fragment custom blur highlight-current-green">Simulated Sum types </li>
-          <li class="fragment custom blur highlight-current-green">Product types represented by classes with member variables.</li>
-        </ul>
-        <aside class="notes">
-          <p>Historically, Java didn't have direct support for ADTs. To mimic sum types, you'd typically use class hierarchies
-          and rely on the Visitor pattern, which is quite verbose and can be difficult to get right.</p>
-          <p>It also doesn't provide the same level of compile-time safety as true ADTs. </p>p>
-            <p>Product types were easier, typically represented by regular classes with member variables.</p>
-        </aside>
-      </section>
-    </section>
-    <section>Algebraic Data Types
-
-      <section>
-        <h4 class="fragment custom blur highlight-blue-initially" data-fragment-index="0">Modern Java</h4>
-        <ul>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="1">Records</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="2">Sealed Interfaces</li>
-          <li class="fragment custom blur highlight-current-green" data-fragment-index="3">Pattern Matching</li>
-        </ul>
-
-      </section>
-      <aside class="notes">
-        <ul>
-          <li>(Records)Introduced in Java 14, records offer a concise syntax for defining immutable data carriers, providing nominal types and components with
-            human-readable names.
-          </li>
-          <li>Introduced in Java 17, sealed interfaces allow classes and interfaces to have more control over their permitted subtypes.
-            This enables precise data modelling as sealed hierarchies of immutable records. The compiler knows all possible subtypes at compile time, a crucial
-            requirement for safe sum types.
-          </li>
-          <li>Pattern Matching: Pattern matching is a powerful feature that enhances Java’s instanceof operator and switch expressions/statements.
-            It allows developers to concisely and safely extract data from objects based on their structure.
-            This capability streamlines type checking and casting, leading to more readable and less error-prone code.
-            The evolution of pattern matching in Java is noteworthy.
-            Initially introduced in Java 16 to enhance the instanceof operator JEP 394, it was later extended to switch expressions and statements in Java 17
-            JEP 406.
-            This expansion broadened the applicability of pattern matching, enabling more expressive and safer code constructs.
-          </li>
-        </ul>
-        <p>
-          Restricting the possible implementations of a type enables exhaustive pattern matching and makes invalid states unrepresentable.
-          This is particularly useful for general domain modelling with type safety.
-        </p>
-      </aside>
+            <section data-auto-animate>
+                <h4 class="custom blur highlight-blue-initially" data-fragment-index="0">Modern Java</h4>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Records</li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">Sealed
+                        Interfaces
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">Pattern
+                        Matching
+                    </li>
+                </ul>
+                <aside class="notes">
+                    <ul>
+                        <li><p>(Records)> offer a concise syntax for defining immutable data
+                            carriers, providing nominal types and components with
+                            human-readable names.</p>
+                        </li>
+                        <li><p>(Sealed interfaces)> allow classes and interfaces to have precise control
+                            over their permitted subtypes.
+                            This enables precise data modelling as sealed hierarchies of immutable records. The compiler
+                            knows all possible subtypes at compile time, a crucial requirement for safe sum types.</p>
+                        </li>
+                        <li><p>(Pattern Matching)> allows developers to concisely and safely extract data
+                          from objects based on their structure.</p>
+                        </li>
+                    </ul>
+                    <p>
+                        Restricting the possible implementations of a type enables exhaustive pattern matching and makes
+                        <b>invalid states unrepresentable</b>.
+                        This is particularly useful for general domain modelling with type safety.
+                    </p>
+                </aside>
+            </section>
 
 
-      <section>
-        <h4>What about Enums?</h4>
-        <pre><code class="java" data-trim data-noescape data-line-numbers>
+            <section data-auto-animate>
+                <h4>What about Enums?</h4>
+                <pre><code class="java" data-trim data-noescape data-line-numbers>
 enum Task {
   NotStarted,
   Started,
@@ -644,9 +871,13 @@ sealed interface TaskStatus{
 }
                 </code>
             </pre>
-
-      </section>
-      <section>
+              <aside class="notes">
+                <h4>
+                  At first glance one might think we already have sum types with java enums...
+                </h4>
+              </aside>
+            </section>
+            <section data-auto-animate>
         <pre>
                 <code class="java" data-trim data-noescape data-line-numbers>
 enum Planet {
@@ -666,13 +897,14 @@ enum Planet {
 }
               </code>
             </pre>
-        <aside class="notes">
-          <p>
-            It is possible to associate fixed data with an enum constant, such as the mass and radius of the planet
-          </p>
-        </aside>
-      </section>
-      <section>
+                <aside class="notes">
+                    <h4>
+                        It is possible to associate fixed data with an enum constant, such as here with the mass and radius of the
+                        planet.
+                    </h4>
+                </aside>
+            </section>
+            <section data-auto-animate>
         <pre>
                 <code class="java" data-trim data-noescape data-line-numbers>
 sealed interface Celestial {
@@ -685,65 +917,84 @@ sealed interface Celestial {
 }
               </code>
             </pre>
-        <aside class="notes">
-          <p>
-            sealed interfaces work at a higher level. Where enums enumerate a fixed list of instances, sealed records enumerate a fixed list of kinds of instances
-          </p>
-          <p>
-            Unlike enums, records allow us to attach arbitrary attributes to each of the enumerated states. We are no longer restricted to fixed constants.
-          </p><p>
-            In the Celestial example, we see a sum of products. This is a useful technique for modelling complex domains in a flexible but type-safe manner.
-            For sums of products to work, we have to commit to the subtypes, which is a form of tight coupling.
-            This works well if we are sure the subtypes are unlikely to change.
-            We trade some future flexibility for an exhaustive list of subtypes that allows better reasoning about shapes, especially when it comes to pattern matching.
-          </p>
-        </aside>
-      </section>
-    </section>
-    <section><h4>The Visitor Pattern</h4>
-      <section>
-        <pre><code class="language-java" data-noescape data-trim data-fragment-index="0">
+                <aside class="notes">
+                  <h4>sealed interfaces work at a higher level.</h4>
+                    <p>
+                      Where enums enumerate a fixed list of instances,
+                        <em>sealed records enumerate a fixed list of kinds of instances</em>
+                    </p>
+                    <p>
+                        Unlike enums, records allow us to attach arbitrary attributes to each of the enumerated states.
+                        <em>We are no longer restricted to fixed constants.</em>
+                    </p>
+                    <p>
+                        In this Celestial example, we see a sum of products.</p>
+                       <p> For sums of products to work, we have to commit to the subtypes, which is a form of tight
+                        coupling.
+                        This works well if we are sure the subtypes are unlikely to change.</p>
+                        <p><em>We trade some future flexibility for an exhaustive list of subtypes</em> that allows better reasoning
+                        about shapes, especially when it comes to pattern matching.
+                    </p>
+                </aside>
+            </section>
+        </section>
+        <section data-auto-animate><h3>The Visitor Pattern</h3>
+
+
+          <section data-auto-animate>
+            <div class="fragment custom blur highlight-current-green check" data-fragment-index="1">
+              <h5>Purpose</h5>
+              <p>Handle operations on different data
+                types within a hierarchy of objects without
+                modifying the structure of those objects themselves.<p></div>
+        <pre><code class="language-java fragment" data-noescape data-trim data-fragment-index="2">
 sealed interface Shape
     permits Circle, Rectangle, Triangle, Pentagon {
-  <T> T accept(ShapeVisitor<T> visitor);
+  &lt;T&gt; T accept(ShapeVisitor&lt;T&gt; visitor);
 }
-            </code><code class="language-java fragment" data-noescape data-trim data-fragment-index="1">
-interface ShapeVisitor<T> {
+            </code><code class="language-java fragment" data-noescape data-trim data-fragment-index="3">
+interface ShapeVisitor&lt;T&gt; {
   T visit(Circle circle);
   T visit(Rectangle rectangle);
   T visit(Triangle triangle);
   T visit(Pentagon pentagon);
 }
           </code></pre>
-        <aside class="notes">
-          <p>
-            The Visitor pattern is a behavioral design pattern.
-          </p>
-          <p>
-            Traditionally, Java developers used the Visitor pattern to handle operations on different data types within a hierarchy of objects without
-            modifying the structure of those objects themselves. It achieves this by separating the operation's logic into a separate "visitor" class.
-            However,
-            this approach has several drawbacks, as we will see when we compare using a sum type with Pattern Matching
-          </p>
-          <ul>
-            <li>Shape is a sealed interface, only permitting Circle, Rectangle, Triangle and Pentagon to implement it.</li>
-            <li>ShapeVisitor Interface: Defines the visit methods for each shape type.
-              The generic type T allows visitors to return different types of results.</li>
-          </ul>
-        </aside>
-      </section>
-      <section>
+                <aside class="notes">
+                    <h4>
+                        Let's talk about the  Visitor pattern. It is a gang of 4 behavioral design pattern.
+                    </h4>
+                    <p>
+                        Traditionally, Java developers used the Visitor pattern to operate on different data
+                        types within a hierarchy without modifying the structure of those objects themselves. </p>
+                      <p>It achieves this by separating the
+                        operation's logic into a separate <em>visitor</em> class.
+                        However,
+                        this approach has several drawbacks, as we will see when we compare using a sum type with
+                        Pattern Matching
+                    </p>
+                    <ul>
+                        <li>Shape is a sealed interface, only permitting Circle, Rectangle, Triangle and Pentagon to
+                            implement it.
+                        </li>
+                        <li>ShapeVisitor Interface: Defines the visit methods for each shape type.
+                            The generic type T allows visitors to return different types of results.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+            <section data-auto-animate>
         <pre><code class="language-java " data-noescape data-trim>
 record Circle(double r) implements Shape {
 
-  public <T> T accept(ShapeVisitor<> visitor) {
+  public &lt;T&gt; T accept(ShapeVisitor&lt;T&gt; visitor) {
     return visitor.visit(this);
   }
 }
             </code><code class="language-java fragment" data-noescape data-trim data-fragment-index="1">
 record Rectangle(double w, double h) implements Shape {
 
-  public <T> T accept(ShapeVisitor<T> visitor) {
+  public &lt;T&gt; T accept(ShapeVisitor&lt;T&gt; visitor) {
     return visitor.visit(this);
   }
 }
@@ -751,34 +1002,40 @@ record Rectangle(double w, double h) implements Shape {
 record Triangle(double s1, double s2, double s3)
         implements Shape {
 
-  public <T> T accept(ShapeVisitor<T> visitor) {
+  public &lt;T&gt; T accept(ShapeVisitor&lt;T&gt; visitor) {
     return visitor.visit(this);
   }
 }
             </code><code class="language-java fragment" data-noescape data-trim data-fragment-index="3">
 record Pentagon(double s) implements Shape {
 
-  public <T> T accept(ShapeVisitor<T> visitor) {
+  public &lt;T&gt; T accept(ShapeVisitor&lt;T&gt; visitor) {
     return visitor.visit(this);
   }
 }
         </code></pre>
-        <aside class="notes">
-          <p>
-            Every concrete shape has to have the accept method which takes a ShapeVisitor and calls the appropriate visit method on the visitor.
-          </p>
+                <aside class="notes">
+                    <p>
+                        Every concrete shape has to have the accept method which takes a ShapeVisitor and calls the
+                        appropriate visit method on the visitor.
+                    </p>
 
-          <p>The Visitor pattern heavily relies on polymorphism, specifically double dispatch.  </p>
-          <ol>
-          <li>First Dispatch (Dynamic): When accept(visitor) is called the correct accept method is chosen at runtime based upon the actual type of shape. This is standard dynamic polymorphism. </li>
-          <li>Second Dispatch (Within Visitor): Inside the accept method this is now statically known to the concrete shape type (e.g triangle).</li>
-          </ol>
-          <p>The compiler can statically choose the correct visit method in the Visitor to call, based upon the type of the current visitor, passed in as an argument to the accept() method.</p>
-        </aside>
-      </section>
-      <section>
-         <pre><code class="language-java fragment" data-noescape data-trim>
-class AreaCalculator implements ShapeVisitor<Double> {
+                    <p>The Visitor pattern heavily relies on polymorphism, specifically double dispatch. </p>
+                    <ol>
+                        <li>First Dispatch (Dynamic): When accept(visitor) is called the correct accept method is chosen
+                            at runtime based upon the actual type of shape. This is standard dynamic polymorphism.
+                        </li>
+                        <li>Second Dispatch (Within Visitor): Inside the accept method this is now statically known to
+                            the concrete shape type (e.g triangle).
+                        </li>
+                    </ol>
+                    <p>The compiler can statically choose the correct visit method in the Visitor to call, based upon
+                        the type of the current visitor, passed in as an argument to the accept() method.</p>
+                </aside>
+            </section>
+            <section data-auto-animate>
+         <pre><code class="language-java" data-noescape data-trim>
+class AreaCalculator implements ShapeVisitor&lt;Double&gt; {
 
   public Double visit(Circle circle) {
     return PI * circle.r() * circle.r();
@@ -798,7 +1055,7 @@ class AreaCalculator implements ShapeVisitor<Double> {
   }
 }
          </code><code class="language-java fragment" data-noescape data-trim>
-class PerimeterCalculator implements ShapeVisitor<Double> {
+class PerimeterCalculator implements ShapeVisitor&lt;Double&gt; {
 
   public Double visit(Circle circle) {
     return 2 * PI * circle.r();
@@ -817,7 +1074,7 @@ class PerimeterCalculator implements ShapeVisitor<Double> {
   }
 }
          </code><code class="language-java fragment" data-noescape data-trim>
-class InfoVisitor implements ShapeVisitor<String> {
+class InfoVisitor implements ShapeVisitor&lt;String&gt; {
   public String visit(Circle circle) {
     return "Circle with radius: %.2f, area: %.2f, perimeter: %.2f"
      .formatted(circle.r(), new AreaCalculator().visit(circle),
@@ -846,26 +1103,27 @@ class InfoVisitor implements ShapeVisitor<String> {
   }
 }
         </code></pre>
-        <aside class="notes">
-          <h2> Concrete Visitors:</h2>
-         <ul>
-           <li>
-             AreaCalculator: Calculates the area of a shape.
-           </li>
-           <li>
-             PerimeterCalculator: Calculates the perimeter of a shape.
-           </li>
-           <li>
-             InfoVisitor: Generates a string with information about the shape (including area and perimeter).
-           </li>
-         </ul>
-        </aside>
-      </section>
-      <section>
+                <aside class="notes">
+                    <h4> The Concrete Visitors do the calculation</h4>
+                    <ul>
+                        <li>
+                            AreaCalculator: Calculates the area of a shape.
+                        </li>
+                        <li>
+                            PerimeterCalculator: Calculates the perimeter of a shape.
+                        </li>
+                        <li>
+                            InfoVisitor: Generates a string with information about the shape (including area and
+                            perimeter).
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+            <section data-auto-animate>
         <pre><code class="language-java" data-trim data-noescape data-fragment-index="0">
 class Shapes {
   public static void main(String[] args) {
-    List<Shape> shapes = List.of(new Circle(5), new Triangle(3, 3, 3), new Rectangle(3, 5), new Pentagon(5.6));
+    List&lt;Shape&gt; shapes = List.of(new Circle(5), new Triangle(3, 3, 3), new Rectangle(3, 5), new Pentagon(5.6));
     InfoVisitor infoVisitor = new InfoVisitor();
 
     System.out.println("\nShapes:");
@@ -881,11 +1139,15 @@ Triangle with sides: 3.00, 3.00, 3.00, area: 3.90, perimeter: 9.00
 Rectangle with width: 3.00 , height: 5.00, area: 15.00, perimeter: 16.00
 Pentagon with side: 5.60, area: 53.95, perimeter: 28.00
         </code></pre>
-      </section>
-    </section>
-    <section>
-      <h4>Pattern Matching</h4>
-      <section>
+              <aside class="notes">
+                <h4>Here we output some values to the console</h4>
+                <p>Next lets look at Pattern Matching</p>
+              </aside>
+            </section>
+        </section>
+        <section data-auto-animate>
+            <h3>Pattern Matching</h3>
+            <section data-auto-animate>
             <pre><code class="language-java" data-trim data-noescape>
 sealed interface Shape
                 permits Circle, Rectangle, Triangle, Pentagon {}
@@ -895,13 +1157,13 @@ record Rectangle(double w, double h) implements Shape {}
 record Triangle(double s1, double s2, double s3) implements Shape {}
 record Pentagon(double s) implements Shape {}
             </code></pre>
-        <aside class="notes">
-          Here we have a sealed interface called 'Shape' representing different geometric shapes.
-          Notice that we don't need and additonal method defined to do patten matching
-        </aside>
-      </section>
+                <aside class="notes">
+                    <p>Here we have a sealed interface called <em>Shape</em> representing different geometric shapes.</p>
+                    <p>Notice that we don't need and additional method defined to do patten matching</p>
+                </aside>
+            </section>
 
-      <section>
+            <section data-auto-animate>
              <pre><code class="language-java" data-trim data-noescape>
 static double area(Shape shape) {
   return switch (shape) {
@@ -914,15 +1176,16 @@ static double area(Shape shape) {
    };
 }
                    </code></pre>
-        <aside class="notes">
-          This code demonstrates a switch expression, enhanced to work with our sealed interface.
-          Each 'case' handles a specific shape by deconstructing the record's components directly in the 'case' label.
-          For instance, 'Circle(var r)' extracts the radius.
-          We calculate the area accordingly, and thanks to the 'permits' clause in our 'Shape' definition, the compiler guarantees we've covered all possible shape types here, making our switch exhaustive.
-          Also, notice the 'yield' keyword in the 'Triangle' case. 'yield' is used here because we have a multi-line statement block for the calculation of the area of the Triangle.
-        </aside>
-      </section>
-      <section>
+                <aside class="notes">
+                    <p>Here we replace the AreaVisitor with a simple method and  a switch expression.
+                    Each <em>case</em> handles a specific shape by deconstructing the record's components directly in the
+                  <em>case</em> label.</p>
+                  <p> For instance, <em>Circle(var r)</em> extracts the radius.
+                    We calculate the area accordingly, and thanks to the 'permits' clause in our 'Shape' definition, the
+                    compiler guarantees we've covered all possible shape types here, making our switch exhaustive.</p>
+                </aside>
+            </section>
+            <section data-auto-animate>
                <pre><code class="language-java" data-trim data-noescape>
  static double perimeter(Shape shape) {
     return switch (shape) {
@@ -933,8 +1196,8 @@ static double area(Shape shape) {
     };
   }
                </code></pre>
-      </section>
-      <section>
+            </section>
+            <section data-auto-animate>
                <pre><code class="language-java" data-trim data-noescape>
    static String info(Shape shape) {
     return switch (shape) {
@@ -952,87 +1215,113 @@ static double area(Shape shape) {
              .formatted(p.s(), area(p), perimeter(p));
     };
                </code></pre>
-      </section>
+            </section>
 
-    </section>
-    <section>
-      <h4>The Expression Problem</h4>
-      <section>
-      <h4 class="highlight-blue-initially"><em>The challenge of extending data
-        structures and operations independently.</em></h4>
+        </section>
+        <section data-auto-animate>
+            <h3>The Expression Problem</h3>
+            <section data-auto-animate>
+                <h4 class="highlight-blue-initially"><em>The challenge of extending data
+                    structures and operations independently.</em></h4>
 
-      <ul>
-        <li class="fragment custom blur highlight-current-green" data-fragment-index="1">
-          <strong>Add new data types</strong> Without modifying existing code that operates on those data
-          types.
-        </li>
-        <li class="fragment custom blur highlight-current-green" data-fragment-index="2">
-          <strong>Add new operations</strong> Without modifying existing data types.
-        </li>
-      </ul>
-      <aside class="notes">
-        <p>The Expression Problem is a fundamental challenge in software design.</p>
-        <p>Essentially, it's about how difficult it can be to add both new data types AND new operations that work on those types without constantly having to change existing code.</p>
-        <p>Ideally, we want our code to be flexible enough to accommodate these extensions independently.</p>
-      </aside>
-      </section>
-    </section>
-    <section><h4>Visitor Pattern</h4>
-      <section>
-        <p class="fragment custom blur highlight-current-green" data-fragment-index="1">Adding new operations
-          (Easy)</p>
-        <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Adding new data type
-          (Hard)</p>
-        <p class="fragment custom blur highlight-current-green" data-fragment-index="3">Verbose</p>
-        <p class="fragment custom blur highlight-current-green" data-fragment-index="4">No Exhaustiveness
-          Checking</p>
-        <aside class="notes">
-          <p>Let's talk about the trade-offs of the Visitor pattern.</p>
-          <ul>
-            <li>It excels when you need to add new operations frequently, as it doesn't require modifying existing classes.</li>
-            <li>However, adding new data types (shapes in our previous example) is cumbersome, as you have to update all your visitors.</li>
-            <li>It's also known for being quite verbose due to the double dispatch mechanism.</li>
-            <li> Finally, a major drawback is the lack of exhaustiveness checking; the compiler won't warn you if a visitor doesn't handle all possible types.</li>
-          </ul>
-        </aside>
-      </section>
-    </section>
-    <section><h4>Pattern Matching</h4>
-      <section>
-        <p class="fragment custom blur highlight-current-green" data-fragment-index="1">Adding new operations
-          (Easy)</p>
-        <p class="fragment custom blur highlight-current-green" data-fragment-index="2">Adding new data type
-          (Easier)</p>
-        <p class="fragment custom blur highlight-current-green" data-fragment-index="3">More concise</p>
-        <p class="fragment custom blur highlight-current-green" data-fragment-index="4">Exhaustiveness
-          Checking</p>
-      </section>
-      <aside class="notes">
-        <p> Let's wrap up the benefits of pattern matching, especially when combined with sealed types.</p>
-       <ul>
-         <li>We see that adding new operations is straightforward.</li>
-         <li>But now, thanks to sealed types and records, adding new data types becomes even simpler.</li>
-         <li>The code is generally more concise and readable.</li>
-         <li> And critically, the compiler helps us with exhaustiveness checking, ensuring we handle all possible cases, which boosts code safety.</li>
-       </ul>
-      </aside>
-    </section>
-    <section data-background-color="aquamarine">
-      <h2>🍦</h2>
-    </section>
-    <section data-background-color="rgb(70, 70, 255)">
-      <h2>🍰</h2>
-    </section>
-    <section>
-      <section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
-        <h2>🐟</h2>
-      </section>
+                <ul>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">
+                        <strong>Add new data types</strong> Without modifying existing code that operates on those data
+                        types.
+                    </li>
+                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">
+                        <strong>Add new operations</strong> Without modifying existing data types.
+                    </li>
+                </ul>
+                <aside class="notes">
+                    <p>The Expression Problem is a fundamental challenge in software design.</p>
+                  <ul>
+                    <li>
+                      Essentially, it's about how difficult it can be to add both new data types AND new operations
+                      that work on those types without constantly having to change existing code.
+                    </li>
+                    <li>Ideally, we want our code to be flexible enough to accommodate these extensions
+                      independently.</li>
+                  </ul>
+
+                </aside>
+            </section>
+        </section>
+        <section data-auto-animate><h3>Visitor Pattern</h3>
+            <section data-auto-animate>
+              <ul>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Adding new
+                    operations
+                    (Easy)</li>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">Adding new data
+                    type
+                    (Hard)</li>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">Verbose</li>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="4">No Exhaustiveness
+                    Checking</li>
+              </ul>
+                <aside class="notes">
+                    <p>Let's talk about the trade-offs of the Visitor pattern.</p>
+                    <ul>
+                        <li>It excels when you need to add new operations frequently, as it doesn't require modifying
+                            existing classes.
+                        </li>
+                        <li>However, adding new data types (shapes in our previous example) is cumbersome, as you have
+                            to update all your visitors.
+                        </li>
+                        <li>It's also known for being quite verbose due to the double dispatch mechanism.</li>
+                        <li> Finally, a major drawback is the lack of exhaustiveness checking; the compiler won't warn
+                            you if a visitor doesn't handle all possible types.
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+        </section>
+        <section data-auto-animate><h3>Pattern Matching</h3>
+            <section data-auto-animate>
+              <ul>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Adding new
+                  operations
+                  (Easy)</li>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">Adding new data
+                  type
+                  (Easier)</li>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">More concise</li>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="4">Exhaustiveness
+                  Checking</li>
+              </ul>
+              <aside class="notes">
+                <p> Let's wrap up the benefits of pattern matching, especially when combined with sealed types.</p>
+                <ul>
+                  <li>We see that adding new operations is straightforward.</li>
+                  <li>But now, thanks to sealed types and records, adding new data types becomes even simpler.</li>
+                  <li>The code is generally more concise and readable.</li>
+                  <li> And critically, the compiler helps us with exhaustiveness checking, ensuring we handle all
+                    possible cases, which boosts code safety.
+                  </li>
+                </ul>
+              </aside>
+            </section>
+
+        </section>
       <section data-background-gradient="radial-gradient(#283b95, #17b2c3)">
-        <h2>🐳</h2>
-      </section>
-    </section>
+            <h2>🍦</h2>
+          <h3>Questions?</h3>
+        </section>
+        <section data-background-color="rgb(70, 70, 255)">
+          <h3>Fini</h3>
+            <h2>🍰</h2>
+        </section>
+        <section data-auto-animate>
+            <section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+                <h2>🐟</h2>
+            </section>
+            <section data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+                <h2>🐳</h2>
+            </section>
+        </section>
 
-  </div>
+    </div>
 </div>
 
 <script src="dist/reveal.js"></script>
