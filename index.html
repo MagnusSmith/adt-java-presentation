@@ -77,15 +77,25 @@
 
 <div class="reveal">
     <div class="slides">
-        <section data-background-transition="slide" data-background="assets/adt_pattern_matching_java.webp"></section>
+        <section data-background-transition="slide" data-background="assets/adt_pattern_matching_java.webp">
+            <aside class="notes" contenteditable>
+            <h3>In this talk I'm going to discuss Algebraic Data Types</h3>
+                I'm going to cover.
+                <ol>
+                    <li>Creating a model, relate this to types and objects in computer language and then to algebra</li>
+                    <li>Introduce two flavours of Algebraic Data Types</li>
+                    <li>Approaches in different languages</li>
+                    <li>Focus on Modern Java and something called the Expression Problem</li>
+                </ol>
+            </aside>
+        </section>
         <section data-auto-animate><h3>Domain Modelling</h3>
             <section data-auto-animate>
                 <aside class="notes" contenteditable>
                     <h2>When we develop an application</h2>
                     <ul>
                         <li>Model some business problem by creating a conceptual model of the real-world</li>
-                        <li>Its cheaper and easier to explore the business context that the software system is being
-                            designed to address.
+                        <li>Its cheaper and easier to explore the business context with a model.
                         </li>
                         <li>It helps us understand the <em><b>domain</b></em> where our software operates</li>
                         <li>Think of it like developing a blueprint before constructing a building</li>
@@ -113,16 +123,16 @@
                 </ol>
                 <aside class="notes" contenteditable>
                     <h2>Essential steps</h2>
-                    <ul>
-                        <li>Start by identifying the important concepts, entities, and relationships within the
+                    <ol>
+                        <li> >Start by identifying the important concepts, entities, and relationships within the
                             domain.
                         </li>
-                        <li>Model these concepts and their relationships using diagrams. classes</li>
-                        <li>For each concept, we define its attributes (properties) and behaviour (actions).</li>
-                        <li>Refine the model iteratively based on feedback, further analysis, through discussions with
+                        <li> >Model these concepts and their relationships using diagrams. classes</li>
+                        <li> >For each concept, we define its attributes (properties) and behaviour (actions).</li>
+                        <li> >Refine the model iteratively based on feedback, further analysis, through discussions with
                             domain experts.
                         </li>
-                    </ul>
+                    </ol>
                 </aside>
             </section>
         </section>
@@ -149,18 +159,17 @@
                     </li>
                 </ul>
                 <aside class="notes" contenteditable>
-                    <h2>Domain modelling is closely tied to the concepts of types and objects that we are familiar with
-                        in object-oriented programming</h2>
+                    <h3>Domain modelling is closely tied to the concepts of types and objects in programming</h3>
                     <ul>
-                        <li>(Concepts) often translate directly into types in our code. For example, the “Book” concept
+                        <li> > (Concepts) often translate directly into (>types) in our code. The <em>Book</em> concept
                             might become a Book
                             class.
                         </li>
-                        <li>(Instances) of these types represent specific objects. Each Book object would represent a
-                            particular book in the library.
+                        <li> > (Instances) of these types represent specific (>objects). Each Book object represents a
+                            particular book in a library.
                         </li>
-                        <li>(Attributes) in the domain model become properties (fields) of the class.</li>
-                        <li>(Behaviour) defined in the domain model is implemented as methods in the class.
+                        <li> > (Attributes) in the domain model become properties (> fields) of the class.</li>
+                        <li> > (Behaviour) defined in the domain model is implemented as (> methods).
                         </li>
                     </ul>
                 </aside>
@@ -190,22 +199,20 @@
                 <aside class="notes" contenteditable>
                     <h2>Algebraic Structures:</h2>
                     <p> The relationship between a domain model and an algebra can seem abstract at first.
-                        It is though a powerful analogy with practical implications in software design, especially when
-                        dealing with more complex systems.</p>
+                        It is though a powerful and practical analogy, especially when dealing with more complex systems.</p>
                     <ul>
-                        <li>(Types as Sets) In the domain model, we can think of each concept as a set of possible
+                        <li> > (In the domain model), we can think of each concept or type as a (> set) of possible
                             values.
-                            For instance, “Customer” represents the set of all possible customers.
+                            A <em>Customer</em> represents the set of all possible customers.
                         </li>
-                        <li>(Relationships as Functions) Relationships between concepts can be modelled as functions.
+                        <li> > (Relationships ) between concepts can be modelled as (> functions).
                             An “Order” might have a function getCustomer() that maps an order to its corresponding
                             customer.
                         </li>
-                        <li>(Operations) An algebra defines operations on these sets. In an e-commerce example, we might
-                            have operations like “add product to order,”
-                            “calculate total price,” or “apply discount.”
+                        <li> > (An algebra) defines operations on sets. In an e-commerce example, we might
+                            have operations like “calculate total price” or “apply discount.”
                         </li>
-                        <li>(L&P)Operations adhere to certain laws and properties. These laws reflect the business rules
+                        <li> > (Operations) adhere to certain laws and properties. These laws reflect the business rules
                             and constraints of the domain.
                         </li>
                     </ul>
@@ -230,16 +237,16 @@
                 <aside class="notes" contenteditable>
                     <h2>Putting it all together</h2>
                     <ul>
-                        <li>The domain model defines sets and operations in the algebra. It ensures that the algebra
+                        <li> > (The domain) model defines sets and operations in the algebra. It ensures that the algebra
                             accurately reflects the
                             real-world problem.
                         </li>
-                        <li>The algebraic structure helps us reason about the behaviour of the system and ensures
+                        <li> > (The algebraic) structure helps us reason about the behaviour of the system and ensures
                             consistency.
-                            An operation like<em><b>adding a product to an order</b></em> probably needs to be
-                            associative (the order of items on your bill shouldn’t matter).
+                            <p>An operation like<em><b>adding a product to an order</b></em> probably needs to be
+                            associative (the order of items on your bill shouldn’t matter).</p>
                         </li>
-                        <li>In code, we implement the algebra using classes, methods, and data structures. The algebraic
+                        <li> > (In code), we implement the algebra using classes, methods, and data structures. The algebraic
                             laws provide the rules to avoid
                             inconsistencies.
                         </li>
@@ -263,13 +270,13 @@
                 <aside class="notes" contenteditable>
                     <h2>What does this give us?</h2>
                     <ul>
-                        <li>(R&P) Using an algebraic approach brings rigour and precision to the domain model. It helps
+                        <li> > (Using) an algebraic approach brings rigour and precision to the domain model. It helps
                             us clearly define the behaviour of a system.
                         </li>
-                        <li>(Testability)Algebraic laws can be used to create comprehensive test cases, ensuring that
+                        <li> > (Algebraic) laws can be used to create comprehensive test cases, ensuring that
                             the implementation adheres to the domain rules.
                         </li>
-                        <li>(Maintainability)A well-defined algebra makes code more modular and easier to maintain.
+                        <li> > (A well-defined) algebra makes code more modular and easier to maintain.
                             Changes in the domain can be reflected by modifying the
                             algebra and its implementation.
                         </li>
@@ -303,7 +310,8 @@
                 <p class="fragment custom blur highlight-green" data-fragment-index="1">
                     withdraw operation requires sufficient funds</p>
                 <aside class="notes">
-                    These operations would need to satisfy certain laws
+                    <h4>These operations would need to satisfy certain laws</h4>
+                    <p> >(withdraw) operation requires sufficient funds</p>
                 </aside>
             </section>
             <section data-auto-animate>
@@ -311,6 +319,9 @@
                 <h5><em>Associativity</em></h5>
                 <p class="fragment custom blur highlight-green" data-fragment-index="1">
                     Multiple deposits and withdrawals result in same final balance regardless of order</p>
+                <aside class="notes">
+                    <p> >(Multiple) deposits and withdrawals result in same final balance regardless of order</p>
+                </aside>
             </section>
             <aside class="notes" contenteditable>
                 <p>By implementing these algebraic laws in our code, we ensure that the banking system behaves correctly
@@ -319,45 +330,7 @@
         </section>
         <section data-auto-animate>
             <h3>Algebraic Data Types</h3>
-            <section data-auto-animate data-background="assets/lego_transparent.png" data-background-opacity="0.1">
-                <h4 class="highlight-blue-initially" data-fragment-index="0">Features</h4>
-                <ul>
-                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Composite
-                    </li>
-                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">Readability
-                    </li>
-                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">Constraint
-                        Enforcement
-                    </li>
-                    <li class="fragment custom blur highlight-current-green check" data-fragment-index="4">Reduce
-                        Boilerplate
-                    </li>
-                </ul>
-                <aside class="notes" contenteditable>
-                    <h3>Let's discuss the salient features</h3>
-                    <ul>
-                        <li>
-                            (Composite)> Create composite data types by combining other simpler types. Model complex
-                            data structures using simpler building blocks, much like LEGO.
-                        </li>
-                        <li>(Readability)> code is more readable by explicitly defining the structure and all possible
-                            values. <em>This makes it easier to
-                                understand and reason about the code which in turn helps improve maintainability.</em>
-                        </li>
-                        <li>(C E)> The compiler acts as the policeman, it detects errors at compile time, preventing
-                            runtime issues that might arise from invalid data structures or operations.
-                        </li>
-                        <li>(R B)> Compared to using classes or structs alone, they reduce the amount of boilerplate.
-                            Combined with pattern matching often eliminates the need for lengthy if-else chains or
-                            switch statements.
-                        </li>
-                    </ul>
-                    <p>In essence, ADTs help us accurately model data that with a limited set of possible states or
-                        variations
-                        by defining custom data types that are enforced by the type system.</p>
-                    <p> This is a powerful tool for tackling complexity in software engineering.</p>
-                </aside>
-            </section>
+
             <section data-auto-animate data-background="assets/lego_transparent.png" data-background-opacity="0.1">
                 <h4 class="highlight-blue-initially" data-fragment-index="0">Why Algebraic?</h4>
                 <ul>
@@ -369,22 +342,29 @@
                 <aside class="notes" contenteditable>
                     <h2>So why Algebraic?</h2>
                     <ul>
-                        <li>Objects: The types that make up the algebra.</li>
-                        <li>Operations: The ways to combine types to create new types.</li>
-                        <li>Laws: The relationships or rules between the types and the operations.</li>
+                        <li> >(Objects): The types that make up the algebra.</li>
+                        <li> >(Operations): The ways to combine types to create new types.</li>
+                        <li> >(Laws): The relationships or rules between the types and the operations.</li>
                     </ul>
                 </aside>
             </section>
+
             <section data-auto-animate data-background="assets/lego_transparent.png" data-background-opacity="0.1">
                 <div class="highlight-blue-initially" data-fragment-index="0">
                     The algebra consists of two primary operators
                 </div>
+                <br/>
                 <ul class="fragment" data-fragment-index="1">
+
                     <li>Product (represented by <em><b>"×"</b></em> or <em><b>"AND"</b></em>)</li>
                     <li>Sum (represented by <em><b>"+"</b></em> or <em><b>"OR"</b></em>)</li>
                 </ul>
                 <aside class="notes" contenteditable>
                     <h3>The Algebra of Data Types has two operators</h3>
+                    <ul>
+                    <li>Product (represented by <em><b>"×"</b></em> or <em><b>"AND"</b></em>)</li>
+                    <li>Sum (represented by <em><b>"+"</b></em> or <em><b>"OR"</b></em>)</li>
+                    </ul>
                 </aside>
             </section>
         </section>
@@ -411,12 +391,12 @@
                 <aside class="notes" contenteditable>
                     <h2>Product Type</h2>
                     <ul>
-                        <li>Logical AND operator.</li>
-                        <li>Product types bundle two or more arbitrary types together. A Point is a product type
+                        <li> >(Logical) AND operator.</li>
+                        <li> >(Product) types bundle two or more arbitrary types together. A Point is a product type
                             consisting of an x AND y coordinate.
                         </li>
-                        <li>In code it looks like tuples, POJOs, structs, or records.</li>
-                        <li>In set theory this is the Cartesian product.</li>
+                        <li> >(In code) it looks like tuples, POJOs, structs, or records.</li>
+                        <li> >(In set) theory this is the Cartesian product.</li>
                     </ul>
                 </aside>
             </section>
@@ -436,11 +416,12 @@
                 <aside class="notes" contenteditable>
                     <h3>Here is an example of a product type</h3>
                     <ul>
-                        <li>TextStyle is a product of Font and Weight</li>
-                        <li>The Set of all possible values is the Cartesian product of the possible values of its
+                        <li> >(TextStyle) is a product of Font and Weight</li>
+                        <li> >(The Set) of all possible values is the Cartesian product of the possible values of its
                             components
                         </li>
                     </ul>
+                     Gives us 9 pairs (SERIF,NORMAL) (SANS_SERIF,NORMAL) (MONOSPACE,NORMAL), etc
                 </aside>
             </section>
         </section>
@@ -463,20 +444,18 @@
                 </ul>
 
                 <aside class="notes">
-                    <h3>Sum types represent a choice between different types, where a value can be one of several
-                        possible types, but only one at a time.</h3>
+                    <h3>Sum types represent a choice between different types, but only one at a time.</h3>
 
                     <ul>
-                        <li>Logical OR operator.</li>
-                        <li>A Shape might be a sum type, as it could be a Circle OR a Square OR a Triangle.</li>
-                        <li>Sum types are built with the ‘+’ operator and combine types with OR, as in T = A OR B OR
-                            C.
+                        <li> >(Logical) OR operator.</li>
+                        <li> >(A Shape) might be a sum type, as it could be a Circle OR a Square OR a Triangle.</li>
+                        <li> >(The sum) is the union of the value sets of the alternatives.
                         </li>
                     </ul>
-                    <p>The sum is the union of the value sets of the alternatives.</p>
+                    <p></p>
                     <p>
-                        Traditionally, sum types are more common in functional languages like Haskell (as data types) or
-                        Scala (as sealed traits of case classes).
+                        Traditionally, sum types are more common in functional languages like Haskell or
+                        Scala.
                     </p>
                 </aside>
             </section>
@@ -494,14 +473,14 @@
 
                 <aside class="notes">
                     <ul>
-                        <li>Type A Holds any of the two possible values: Integer or Boolean</li>
+                        <li> >(Type A) Holds any of the two possible values: Integer or Boolean</li>
                         <li>Type B Holds any of the two possible values: String or Float.</li>
-                        <li>Type C Holds any of the four possible values: Integer, Boolean, String, or Float.</li>
-                        <li>Its commutative A + B = B + A</li>
-                        <li>This is a Sum because the number of items in the resulting type is the sum of the number of
-                            items in each subtype.
-                        </li>
+                        <li> >(Type C) Holds any of the four possible values: Integer, Boolean, String, or Float.</li>
+                        <li> >(Its commutative) A + B = B + A</li>
                     </ul>
+                    <p>This is a Sum because the number of items in the resulting type is the sum of the number of
+                        items in each subtype.
+                    </p>
                 </aside>
             </section>
         </section>
@@ -515,7 +494,8 @@ DnsRecord(AValue(ttl, name, ipv4)
           | TxtValue(ttl, name, value))
         </code></pre>
                 <aside class="notes">
-                    <p>We can define a DNS Record as a sum type:</p>
+                    <h4>We can also combine product and sum types</h4>
+                    <p>Here we have a DNS Record as a sum type:</p>
                 </aside>
             </section>
             <section data-auto-animate>
@@ -561,6 +541,47 @@ DnsRecord(ttl, name, AValue(ipv4)
                 <aside class="notes">Similarly we have the associative law</aside>
             </section>
         </section>
+        <section data-auto-animate data-background="assets/lego_transparent.png" data-background-opacity="0.1">
+
+            <h3>Algebraic Data Types</h3>
+                <section data-auto-animate>
+            <h4 class="highlight-blue-initially" data-fragment-index="0">Features</h4>
+            <ul>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="1">Composite
+                </li>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="2">Readability
+                </li>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="3">Constraint
+                    Enforcement
+                </li>
+                <li class="fragment custom blur highlight-current-green check" data-fragment-index="4">Reduce
+                    Boilerplate
+                </li>
+            </ul>
+            <aside class="notes" contenteditable>
+                <h3>Let's discuss the features of an algebraic data type</h3>
+                <ul>
+                    <li>
+                        > (Create composite) data types by combining other simpler types. Model complex
+                        data structures using simpler building blocks, much like LEGO.
+                    </li>
+                    <li> > (code) is more readable by explicitly defining the structure and all possible
+                        values. <em>This makes it easier to
+                            understand and reason about the code which in turn helps improve maintainability.</em>
+                    </li>
+                    <li> >(The compiler) acts as the policeman, it detects errors at compile time, preventing
+                        runtime issues that might arise from illegal structures or operations.
+                    </li>
+                    <li> >(Compared) to using classes or structs alone, they reduce the amount of boilerplate.
+                    </li>
+                </ul>
+                <p>In essence, algebraic data types help us more accurately model data using a limited set of possible states or
+                    variations.</p>
+                   <p> We do this by defining custom data types that are enforced by the type system.</p>
+                <p> This is a powerful for tackling complexity.</p>
+            </aside>
+        </section>
+        </section>
         <section data-auto-animate>
             <h3>A Historical Perspective</h3>
             <section data-auto-animate>
@@ -574,14 +595,14 @@ DnsRecord(ttl, name, AValue(ipv4)
                     </li>
                 </ul>
                 <aside class="notes">
-                    Let's start with a bit of history. The idea of Algebraic Data Types isn't new.
+                    Let's have a bit of history. The idea of Algebraic Data Types isn't new.
                     <ul>
-                        <li>They trace back to the early days of functional programming, with languages like ML and Hope
+                        <li> >(They trace) back to the early days of functional programming, with languages like ML and Hope
                             in the 1970s.
-                            I first came across them in SML in the mid 90s when i was at Edinburgh University
+                            <p>I first came across them in SML in the mid 90s when i was at Edinburgh University</p>
                         </li>
 
-                        <li>However, it was Haskell that really brought them into the limelight, making them a core part
+                        <li> >(However), it was Haskell that really brought them into the limelight, making them a core part
                             of its type system and
                             showing how powerful they can be for building robust and expressive programs.
                         </li>
@@ -592,7 +613,7 @@ DnsRecord(ttl, name, AValue(ipv4)
             <section data-auto-animate>
                 <h4>ADTs Across Languages</h4>
                 <aside class="notes">
-                    <p>Let's take a quick tour of how ADTs (or their approximations) have been handled in different
+                    <p>Let's take a quick tour of how ADTs (or their approximations) are handled in different
                         languages:</p>
                 </aside>
             </section>
@@ -612,13 +633,13 @@ DnsRecord(ttl, name, AValue(ipv4)
                 <aside class="notes">
                     <ul>
                         <li>
-                            C, being a more traditional imperative language, doesn't have direct support for ADTs.
+                            > (C), being a more traditional imperative language, doesn't have direct support for ADTs.
                         </li>
                         <li>
-                            You can mimic product types using structs, which is relatively straightforward.
+                            > (You) can mimic product types using structs, which is relatively straightforward.
                         </li>
                         <li>
-                            For sum types, it gets trickier.
+                            > (For sum) types, it gets trickier.
                         </li>
                     </ul>
                 </aside>
@@ -667,7 +688,7 @@ DnsRecord(ttl, name, AValue(ipv4)
         data Shape = Circle Float | Rectangle Float Float
       </code></pre>
                 <aside class="notes">
-                    <p>Haskell, being a purely functional language, has a beautiful and concise way of defining ADTs
+                    <p>> (Haskell), being a purely functional language, has a (> elegant) and concise way of defining ADTs
                         using the <em><b>data</b></em>
                         keyword.</p>
                     <p> Here, we see a <em><b>Shape</b></em> type that can either be a <em><b>Circle</b></em> with a
@@ -688,7 +709,7 @@ DnsRecord(ttl, name, AValue(ipv4)
                     <li class="fragment custom blur highlight-current-green check"><em><b>sealed traits</b></em> with
                         <em><b>case classes/objects</b></em> for sum types.
                     </li>
-                    <li class="fragment custom blur highlight-current-green">Robust and type-safe ADT definition.</li>
+                    <li class="fragment custom blur highlight-current-green check">Robust and type-safe ADT definition.</li>
                 </ul>
                 <pre><code class="scala fragment" data-trim data-noescape>
   sealed trait Shape
@@ -699,10 +720,10 @@ DnsRecord(ttl, name, AValue(ipv4)
                     <p>Scala, is a language that blends object-oriented and functional programming. It also provides
                         strong support for ADTs. </p>
                     <ul>
-                        <li>It uses case classes to define product types concisely.</li>
-                        <li>For sum types, you use a combination of sealed traits and case classes or case objects.</li>
-                        <li>Scala has powerful typesafe pattern matching</li>
-                        <li>The sealed keyword here is important. It means that all possible subtypes of Shape must be
+                        <li> >(It uses) case classes to define product types concisely.</li>
+                        <li> >(For sum) types, you use a combination of sealed traits and case classes or case objects.</li>
+                        <li> >(Scala) has powerful typesafe pattern matching</li>
+                        <li> >(The sealed) keyword here is important. It means that all possible subtypes of Shape must be
                             defined in the same
                             file. This allows the compiler to perform exhaustiveness checks when pattern matching,
                             ensuring that you've covered
@@ -728,11 +749,11 @@ DnsRecord(ttl, name, AValue(ipv4)
                 <aside class="notes">
                     <p>TypeScript provides pretty good support for ADTs</p>
                     <ul>
-                        <li>Product types can be represented using interfaces or classes.</li>
-                        <li>Sum types are created by combining types with the union operator (<em><b>|</b></em>) and
+                        <li> >(Product) types can be represented using interfaces or classes.</li>
+                        <li> >(Sum types) are created by combining types with the union operator (<em><b>|</b></em>) and
                             adding a discriminant property.
                         </li>
-                        <li>The discriminant property allows for type-safe pattern matching.</li>
+                        <li> >(The discriminant) property allows for type-safe pattern matching.</li>
                     </ul>
                 </aside>
             </section>
@@ -771,7 +792,7 @@ function area(shape: Shape): number {
                             <p>Notice the <em>kind</em> property in each interface. This is the discriminant. It's a
                                 common string literal type
                                 that tells us which variant of the <em>Shape</em> we're dealing with.</p></li>
-                        <li>Then, in the <em>area</em> function, we use a <em>switch</em> statement on
+                        <li> >(Then,) in the <em>area</em> function, we use a <em>switch</em> statement on
                             <em>shape.kind</em>.</p>
                             <p>TypeScript is smart enough to understand
                                 that inside each <em>case</em>, the <em>shape</em> variable must be of the corresponding
@@ -803,12 +824,12 @@ function area(shape: Shape): number {
                 <aside class="notes">
                     <h4>Historically, Java didn't have direct support for ADTs. </h4>
                     <ul>
-                        <li><p>To mimic sum types, you'd typically use class hierarchies
+                        <li><p> >(To mimic) sum types, you'd typically use class hierarchies
                             and rely on the Visitor pattern. This is quite verbose and can be difficult to get
                             right.</p>
                             <p>It also doesn't provide the same level of compile-time safety as true ADTs. </p></li>
                         <li>
-                            <p>Product types were easier, typically represented by regular classes with member
+                            <p> >(Product) types were easier, typically represented by regular classes with member
                                 variables.</p>
                         </li>
                     </ul>
@@ -888,12 +909,12 @@ enum Planet {
   private final double mass;   // in kilogram
   private final double radius; // in metres
 
-  Planet(double mass, double radius) {
+  private Planet(double mass, double radius) {
     this.mass = mass;
     this.radius = radius;
   }
-  private double mass() { return mass; }
-  private double radius() { return radius; }
+  public double mass() { return mass; }
+  public double radius() { return radius; }
 }
               </code>
             </pre>
@@ -929,12 +950,6 @@ sealed interface Celestial {
                     </p>
                     <p>
                         In this Celestial example, we see a sum of products.</p>
-                       <p> For sums of products to work, we have to commit to the subtypes, which is a form of tight
-                        coupling.
-                        This works well if we are sure the subtypes are unlikely to change.</p>
-                        <p><em>We trade some future flexibility for an exhaustive list of subtypes</em> that allows better reasoning
-                        about shapes, especially when it comes to pattern matching.
-                    </p>
                 </aside>
             </section>
         </section>
@@ -950,7 +965,7 @@ sealed interface Celestial {
                       Let's talk about the  Visitor pattern. It is a gang of 4 behavioral design pattern.
                   </h4>
                   <p>
-                      Traditionally, Java developers used the Visitor pattern to operate on different data
+                      >(Traditionally), Java developers used the Visitor pattern to operate on different data
                       types within a hierarchy without modifying the structure of those objects themselves. </p>
                   <p>It achieves this by separating the
                       operation's logic into a separate <em>visitor</em> class.
@@ -961,12 +976,12 @@ sealed interface Celestial {
               </aside>
           </section>
             <section data-auto-animate>
-        <pre><code class="language-java fragment" data-noescape data-trim data-fragment-index="2">
+        <pre><code class="language-java " data-noescape data-trim data-fragment-index="0">
 sealed interface Shape
     permits Circle, Rectangle, Triangle, Pentagon {
   &lt;T&gt; T accept(ShapeVisitor&lt;T&gt; visitor);
 }
-            </code><code class="language-java fragment" data-noescape data-trim data-fragment-index="3">
+            </code><code class="language-java fragment" data-noescape data-trim data-fragment-index="1">
 interface ShapeVisitor&lt;T&gt; {
   T visit(Circle circle);
   T visit(Rectangle rectangle);
@@ -977,9 +992,9 @@ interface ShapeVisitor&lt;T&gt; {
                 <aside class="notes">
                     <ul>
                         <li>Shape is a sealed interface, only permitting Circle, Rectangle, Triangle and Pentagon to
-                            implement it.
+                            implement it.<p> It has an accept method</p>
                         </li>
-                        <li>ShapeVisitor Interface: Defines the visit methods for each shape type.
+                        <li> >(ShapeVisitor) Interface: Defines the visit methods for each shape type.
                             The generic type T allows visitors to return different types of results.
                         </li>
                     </ul>
@@ -1239,10 +1254,10 @@ static double area(Shape shape) {
                     <p>The Expression Problem is a fundamental challenge in software design.</p>
                   <ul>
                     <li>
-                      Essentially, it's about how difficult it can be to add both new data types AND new operations
+                      >(Essentially), it's about how difficult it can be to add both new data types AND new operations
                       that work on those types without constantly having to change existing code.
                     </li>
-                    <li>Ideally, we want our code to be flexible enough to accommodate these extensions
+                    <li>>(Ideally), we want our code to be flexible enough to accommodate these extensions
                       independently.</li>
                   </ul>
 
@@ -1265,14 +1280,14 @@ static double area(Shape shape) {
                 <aside class="notes">
                     <p>Let's talk about the trade-offs of the Visitor pattern.</p>
                     <ul>
-                        <li>It excels when you need to add new operations frequently, as it doesn't require modifying
+                        <li> >(It) excels when you need to add new operations frequently, as it doesn't require modifying
                             existing classes.
                         </li>
-                        <li>However, adding new data types (shapes in our previous example) is cumbersome, as you have
+                        <li>>(However), adding new data types (shapes in our previous example) is cumbersome, as you have
                             to update all your visitors.
                         </li>
-                        <li>It's also known for being quite verbose due to the double dispatch mechanism.</li>
-                        <li> Finally, a major drawback is the lack of exhaustiveness checking; the compiler won't warn
+                        <li>>(It's) also known for being quite verbose due to the double dispatch mechanism.</li>
+                        <li>>(Finally), a major drawback is the lack of exhaustiveness checking; the compiler won't warn
                             you if a visitor doesn't handle all possible types.
                         </li>
                     </ul>
@@ -1295,10 +1310,10 @@ static double area(Shape shape) {
               <aside class="notes">
                 <p> Let's wrap up the benefits of pattern matching, especially when combined with sealed types.</p>
                 <ul>
-                  <li>We see that adding new operations is straightforward.</li>
-                  <li>But now, thanks to sealed types and records, adding new data types becomes even simpler.</li>
-                  <li>The code is generally more concise and readable.</li>
-                  <li> And critically, the compiler helps us with exhaustiveness checking, ensuring we handle all
+                  <li>>(We) see that adding new operations is straightforward.</li>
+                  <li>>(But) now, thanks to sealed types and records, adding new data types becomes even simpler.</li>
+                  <li>>(The) code is generally more concise and readable.</li>
+                  <li>>(And) critically, the compiler helps us with exhaustiveness checking, ensuring we handle all
                     possible cases, which boosts code safety.
                   </li>
                 </ul>
