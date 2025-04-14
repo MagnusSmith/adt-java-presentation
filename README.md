@@ -1,22 +1,26 @@
 # Algebraic Data Types and Pattern Matching in Modern Java
 ![adt_pattern_matching_java.webp](assets/adt_pattern_matching_java.webp)(index.html) A reveal.js presentation exploring the concepts of Domain Modeling, Algebraic Data Types (ADTs), their implementation across various languages, and a deep dive into how modern Java (Java 21+) tackles these concepts using Records, Sealed Types, and Pattern Matching, contrasting it with the traditional Visitor pattern and addressing the Expression Problem.
 
-This presentation accompanies the blogpost (Algebraic Data Types and Pattern Matching with Java)[https://blog.scottlogic.com/2025/01/20/algebraic-data-types-with-java.html]
+This presentation accompanies the blogpost [Algebraic Data Types and Pattern Matching with Java](https://blog.scottlogic.com/2025/01/20/algebraic-data-types-with-java.html)
 
 ## Table of Contents
 
 * [Viewing the Presentation](#viewing-the-presentation)
 * [About the Presentation](#about-the-presentation)
 * [Technology Used](#technology-used)
-* [License](#license) ## Viewing the Presentation
+* [License](#license) 
+
+
+## Viewing the Presentation
 
 There are two main ways to view this presentation:
 
 1.  **Online (Recommended if hosted on GitHub Pages):**
-    * You can view the presentation directly online [here](https://magnussmith.github.io/adt-java-presentation/). 2.  **Locally:**
-    * Clone this repository: `git clone https://github.com/magnussmith/adt-java-presentation.git`
-    * Navigate to the repository directory: `cd adt-java-presentation`
-    * Open the `index.html` file in your web browser.
+    * You can view the presentation directly online [here](https://magnussmith.github.io/adt-java-presentation/). 
+2.  **Locally:**
+   * Clone this repository: `git clone https://github.com/magnussmith/adt-java-presentation.git`
+   * Navigate to the repository directory: `cd adt-java-presentation`
+   * Open the `index.html` file in your web browser.
 
 ## About the Presentation
 
