@@ -1,50 +1,73 @@
-<p align="center">
-  <a href="https://revealjs.com">
-  <img src="https://hakim-static.s3.amazonaws.com/reveal-js/logo/v1/reveal-black-text-sticker.png" alt="reveal.js" width="500">
-  </a>
-  <br><br>
-  <a href="https://github.com/hakimel/reveal.js/actions"><img src="https://github.com/hakimel/reveal.js/workflows/tests/badge.svg"></a>
-  <a href="https://slides.com/"><img src="https://s3.amazonaws.com/static.slid.es/images/slides-github-banner-320x40.png?1" alt="Slides" width="160" height="20"></a>
-</p>
+# Algebraic Data Types and Pattern Matching in Modern Java
+![adt_pattern_matching_java.webp](assets/adt_pattern_matching_java.webp)(index.html) A reveal.js presentation exploring the concepts of Domain Modeling, Algebraic Data Types (ADTs), their implementation across various languages, and a deep dive into how modern Java (Java 21+) tackles these concepts using Records, Sealed Types, and Pattern Matching, contrasting it with the traditional Visitor pattern and addressing the Expression Problem.
 
-reveal.js is an open source HTML presentation framework. It enables anyone with a web browser to create beautiful presentations for free. Check out the live demo at [revealjs.com](https://revealjs.com/).
+This presentation accompanies the blogpost (Algebraic Data Types and Pattern Matching with Java)[https://blog.scottlogic.com/2025/01/20/algebraic-data-types-with-java.html]
 
-The framework comes with a powerful feature set including [nested slides](https://revealjs.com/vertical-slides/), [Markdown support](https://revealjs.com/markdown/), [Auto-Animate](https://revealjs.com/auto-animate/), [PDF export](https://revealjs.com/pdf-export/), [speaker notes](https://revealjs.com/speaker-view/), [LaTeX typesetting](https://revealjs.com/math/), [syntax highlighted code](https://revealjs.com/code/) and an [extensive API](https://revealjs.com/api/).
+## Table of Contents
 
----
+* [Viewing the Presentation](#viewing-the-presentation)
+* [About the Presentation](#about-the-presentation)
+* [Technology Used](#technology-used)
+* [License](#license) ## Viewing the Presentation
 
-Want to create reveal.js presentation in a graphical editor? Try <https://slides.com>. It's made by the same people behind reveal.js.
+There are two main ways to view this presentation:
 
----
+1.  **Online (Recommended if hosted on GitHub Pages):**
+    * You can view the presentation directly online [here](https://magnussmith.github.io/adt-java-presentation/). 2.  **Locally:**
+    * Clone this repository: `git clone https://github.com/magnussmith/adt-java-presentation.git`
+    * Navigate to the repository directory: `cd adt-java-presentation`
+    * Open the `index.html` file in your web browser.
 
-### Sponsors
-Hakim's open source work is supported by <a href="https://github.com/sponsors/hakimel">GitHub sponsors</a>. Special thanks to:
-<div align="center">
-  <table>
-    <td align="center">
-      <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=revealjs&utm_source=github">
-        <div>
-          <img src="https://user-images.githubusercontent.com/629429/151508669-efb4c3b3-8fe3-45eb-8e47-e9510b5f0af1.svg" width="290" alt="WorkOS">
-        </div>
-        <b>Your app, enterprise-ready.</b>
-        <div>
-          <sub>Start selling to enterprise customers with just a few lines of code. Add Single Sign-On (and more) in minutes instead of months.</sup>
-        </div>
-      </a>
-    </td>
-  </table>
-</div>
+## About the Presentation
 
----
+This presentation covers the following key topics:
 
-### Getting started
-- 🚀 [Install reveal.js](https://revealjs.com/installation)
-- 👀 [View the demo presentation](https://revealjs.com/demo)
-- 📖 [Read the documentation](https://revealjs.com/markup/)
-- 🖌 [Try the visual editor for reveal.js at Slides.com](https://slides.com/)
-- 🎬 [Watch the reveal.js video course (paid)](https://revealjs.com/course)
+* **Domain Modeling:**
+    * The importance of modeling real-world problems.
+    * Essential steps in creating a domain model.
+    * Relating domain concepts to programming types and objects.
+    * Connecting domain models to algebraic structures (Sets, Functions, Operations, Laws).
+    * Benefits of an algebraic approach (Rigour, Testability, Maintainability).
+    * A practical banking example.
+* **Algebraic Data Types (ADTs):**
+    * Why the term "Algebraic"? (Objects, Operations, Laws).
+    * **Product Types ("AND"):** Definition, examples (Records, Structs), relation to Cartesian product.
+    * **Sum Types ("OR"):** Definition, examples (Enums, Sealed Hierarchies), relation to unions.
+    * Combining Product and Sum types and algebraic laws (Distributive, Commutative, Associative).
+    * Key features and benefits of ADTs (Composition, Readability, Constraint Enforcement, Reduced Boilerplate).
+* **Historical Perspective & Language Approaches:**
+    * Origins in functional languages (ML, Hope, Haskell).
+    * Simulating ADTs in C (Structs, Tagged Unions and their limitations).
+    * Native support in Haskell (`data`).
+    * Support in Scala (`case classes`, `sealed traits`).
+    * Support in TypeScript (Interfaces, Union Types `|`, Discriminated Unions).
+    * Limitations in Legacy Java (Pre-Java 17).
+* **Modern Java (Java 17+):**
+    * **Records:** Concise immutable data carriers (Product Types).
+    * **Sealed Classes/Interfaces:** Controlled inheritance hierarchies (Sum Types).
+    * **Pattern Matching:** Type-safe data extraction, especially with `switch` expressions.
+    * Comparison with Java Enums.
+* **The Visitor Pattern:**
+    * Traditional approach in Java for operating on type hierarchies.
+    * Implementation example using Shapes (Circle, Rectangle, etc.).
+    * How it works (Double Dispatch).
+* **Pattern Matching in Java:**
+    * Modern alternative using Sealed Types, Records, and `switch`.
+    * Implementation example for Shapes, calculating area and perimeter.
+* **The Expression Problem:**
+    * Definition: The challenge of extending data types and operations independently.
+    * Comparing the Visitor Pattern and Pattern Matching in the context of the Expression Problem (trade-offs in adding new types vs. new operations, verbosity, exhaustiveness checking).
 
---- 
-<div align="center">
-  MIT licensed | Copyright © 2011-2024 Hakim El Hattab, https://hakim.se
-</div>
+## Technology Used
+
+* **reveal.js:** HTML Presentation Framework
+* **Highlight.js:** Syntax highlighting for code examples
+* **Font Awesome:** Icons (e.g., for list bullets)
+* **KaTeX (via reveal.js math plugin):** Rendering mathematical formulas
+* **Theme:** `catppuccin.css` (Custom or standard theme)
+
+All necessary dependencies (CSS, JS) are either included in the repository (`dist/`, `plugin/`) or linked via CDN in `index.html`.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
